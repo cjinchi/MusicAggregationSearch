@@ -13,6 +13,7 @@
 		736ED2EF21A2EA640095C26E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 736ED2EE21A2EA640095C26E /* Assets.xcassets */; };
 		736ED2F221A2EA640095C26E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 736ED2F021A2EA640095C26E /* LaunchScreen.storyboard */; };
 		736ED2FD21A2EA640095C26E /* MusicAggregationSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736ED2FC21A2EA640095C26E /* MusicAggregationSearchTests.swift */; };
+		736ED30821A2EF770095C26E /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736ED30721A2EF770095C26E /* SearchTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		736ED2F821A2EA640095C26E /* MusicAggregationSearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicAggregationSearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		736ED2FC21A2EA640095C26E /* MusicAggregationSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAggregationSearchTests.swift; sourceTree = "<group>"; };
 		736ED2FE21A2EA640095C26E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		736ED30721A2EF770095C26E /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				736ED2E721A2EA640095C26E /* AppDelegate.swift */,
 				736ED2E921A2EA640095C26E /* ViewController.swift */,
 				736ED2EB21A2EA640095C26E /* Main.storyboard */,
+				736ED30721A2EF770095C26E /* SearchTableViewController.swift */,
 				736ED2EE21A2EA640095C26E /* Assets.xcassets */,
 				736ED2F021A2EA640095C26E /* LaunchScreen.storyboard */,
 				736ED2F321A2EA640095C26E /* Info.plist */,
@@ -198,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				736ED2EA21A2EA640095C26E /* ViewController.swift in Sources */,
+				736ED30821A2EF770095C26E /* SearchTableViewController.swift in Sources */,
 				736ED2E821A2EA640095C26E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
