@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  MusicAggregationSearch
 //
-//  Created by 李秋霖 on 2018/11/19.
+//  Created by cjinchi
 //  Copyright © 2018 com.cjinchi. All rights reserved.
 //
 
