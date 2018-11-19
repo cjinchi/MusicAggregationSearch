@@ -2,7 +2,7 @@
 //  SearchTableViewController.swift
 //  MusicAggregationSearch
 //
-//  Created by 李秋霖 on 2018/11/19.
+//  Created by cjinchi
 //  Copyright © 2018 com.cjinchi. All rights reserved.
 //
 
@@ -10,6 +10,8 @@ import UIKit
 
 class SearchTableViewController: UITableViewController {
 
+    @IBOutlet weak var keywordSearchBar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
