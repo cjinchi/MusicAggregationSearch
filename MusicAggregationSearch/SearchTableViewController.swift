@@ -8,13 +8,31 @@
 
 import UIKit
 
-class SearchTableViewController: UITableViewController {
+class SearchTableViewController: UITableViewController,UISearchBarDelegate {
 
-    @IBOutlet weak var keywordSearchBar: UISearchBar!
+    
+    var results = [Song]()
+    var songSourceImages = [SongSource:UIImage]()
+    
+    private func loadSampleSongs(){
+        let song1 = Song(title: "我爱南京", artist: "李志", album: "我爱南京", source: .WY)
+        let song2 = Song(title: "New Boy", artist: "朴树", album: "我去2000年", source: .QQ)
+        let song3 = Song(title: "一切", artist: "程璧", album: "诗遇上歌", source: .XM)
+        
+        results += [song1,song2,song3]
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        for source in SongSource.allCases{
+            songSourceImages[source] = UIImage(named: source.imageName)
+        }
+        
+        loadSampleSongs()
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -26,23 +44,29 @@ class SearchTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return results.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cellIdentifier = "SongTableViewCell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as?SongTableViewCell
+            else{
+                fatalError("Invalid dequeued cell.")
+        }
 
-        // Configure the cell...
+        let result = results[indexPath.row]
+        cell.setCellInfo(songTitle: result.title, songMoreInfo: result.artist+" - "+result.album, songSourceImage: songSourceImages[result.source]!)
+        
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
