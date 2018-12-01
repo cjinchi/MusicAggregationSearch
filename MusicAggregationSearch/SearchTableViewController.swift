@@ -8,16 +8,19 @@
 
 import UIKit
 
-class SearchTableViewController: UITableViewController,UISearchBarDelegate {
+class SearchTableViewController: UITableViewController,UISearchBarDelegate{
 
+    
+    @IBOutlet weak var keywordSearchBar: UISearchBar!
+    let searchController = UISearchController(searchResultsController: nil)
     
     var results = [Song]()
     var songSourceImages = [SongSource:UIImage]()
     
     private func loadSampleSongs(){
-        let song1 = Song(title: "我爱南京", artist: "李志", album: "我爱南京", source: .WY)
-        let song2 = Song(title: "New Boy", artist: "朴树", album: "我去2000年", source: .QQ)
-        let song3 = Song(title: "一切", artist: "程璧", album: "诗遇上歌", source: .XM)
+        let song1 = Song(title: "我爱南京", artist: "李志",source: .WY)
+        let song2 = Song(title: "New Boy", artist: "朴树", source: .QQ)
+        let song3 = Song(title: "一切", artist: "程璧", source: .XM)
         
         results += [song1,song2,song3]
         
@@ -25,7 +28,9 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        keywordSearchBar.delegate = self
+        
         for source in SongSource.allCases{
             songSourceImages[source] = UIImage(named: source.imageName)
         }
@@ -41,6 +46,11 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate {
     }
 
     // MARK: - Table view data source
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        print(indexPath.row)
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -61,10 +71,23 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate {
         }
 
         let result = results[indexPath.row]
-        cell.setCellInfo(songTitle: result.title, songMoreInfo: result.artist+" - "+result.album, songSourceImage: songSourceImages[result.source]!)
+        cell.setCellInfo(songTitle: result.title, songMoreInfo: result.artist, songSourceImage: songSourceImages[result.source]!)
         
 
         return cell
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        
+        
+        
+        self.tableView.reloadData()
+        
+    }
+    
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        return true
     }
     
 

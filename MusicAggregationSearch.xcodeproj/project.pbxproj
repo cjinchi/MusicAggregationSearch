@@ -17,6 +17,7 @@
 		A180A10A21B22E8C006F77C4 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A180A10921B22E8C006F77C4 /* SongTableViewCell.swift */; };
 		A180A10C21B23AAC006F77C4 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = A180A10B21B23AAC006F77C4 /* Song.swift */; };
 		A180A10E21B23B44006F77C4 /* SongSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A180A10D21B23B44006F77C4 /* SongSource.swift */; };
+		A180A11221B2DB47006F77C4 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = A180A11121B2DB47006F77C4 /* Query.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		A180A10921B22E8C006F77C4 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		A180A10B21B23AAC006F77C4 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		A180A10D21B23B44006F77C4 /* SongSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongSource.swift; sourceTree = "<group>"; };
+		A180A11121B2DB47006F77C4 /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		736ED2E621A2EA640095C26E /* MusicAggregationSearch */ = {
 			isa = PBXGroup;
 			children = (
+				A180A11121B2DB47006F77C4 /* Query.swift */,
 				736ED2E721A2EA640095C26E /* AppDelegate.swift */,
 				736ED2E921A2EA640095C26E /* ViewController.swift */,
 				736ED2EB21A2EA640095C26E /* Main.storyboard */,
@@ -210,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A180A10A21B22E8C006F77C4 /* SongTableViewCell.swift in Sources */,
+				A180A11221B2DB47006F77C4 /* Query.swift in Sources */,
 				736ED2EA21A2EA640095C26E /* ViewController.swift in Sources */,
 				736ED30821A2EF770095C26E /* SearchTableViewController.swift in Sources */,
 				736ED2E821A2EA640095C26E /* AppDelegate.swift in Sources */,

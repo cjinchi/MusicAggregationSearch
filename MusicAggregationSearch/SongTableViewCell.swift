@@ -29,5 +29,6 @@ class SongTableViewCell: UITableViewCell {
         self.songMoreInfoLabel.text = songMoreInfo
         self.songSourceImageView.image = songSourceImage
     }
+    
 
 }

@@ -57,12 +57,12 @@
         <!--搜索-->
         <scene sceneID="SDh-ed-6uP">
             <objects>
-                <tableViewController id="6Ux-dd-T2j" customClass="SearchTableViewController" customModule="MusicAggregationSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="6Ux-dd-T2j" customClass="SearchTableViewController" customModule="MusicAggregationSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="opL-Fa-2Qm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" text="" id="fom-RP-aM5">
+                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" text="" id="53a-zV-m91">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits" returnKeyType="search"/>
@@ -112,6 +112,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="搜索" id="EIi-oz-dwm"/>
+                    <connections>
+                        <outlet property="keywordSearchBar" destination="53a-zV-m91" id="eOi-Mh-sEK"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="atg-9I-GgQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -11,14 +11,12 @@ import Foundation
 class Song{
     let title : String
     let artist : String
-    let album : String
     let source : SongSource
     
-    init(title:String,artist:String,album:String,source:SongSource) {
+    init(title:String,artist:String,source:SongSource) {
         
         self.title = title
         self.artist = artist
-        self.album = album
         self.source = source
     }
 }
