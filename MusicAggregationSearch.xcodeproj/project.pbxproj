@@ -18,6 +18,7 @@
 		A180A10C21B23AAC006F77C4 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = A180A10B21B23AAC006F77C4 /* Song.swift */; };
 		A180A10E21B23B44006F77C4 /* SongSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A180A10D21B23B44006F77C4 /* SongSource.swift */; };
 		A180A11221B2DB47006F77C4 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = A180A11121B2DB47006F77C4 /* Query.swift */; };
+		A188C1B521B3D82000C1FD52 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A188C1B421B3D82000C1FD52 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		A180A10B21B23AAC006F77C4 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		A180A10D21B23B44006F77C4 /* SongSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongSource.swift; sourceTree = "<group>"; };
 		A180A11121B2DB47006F77C4 /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
+		A188C1B421B3D82000C1FD52 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A188C1B521B3D82000C1FD52 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +75,7 @@
 				736ED2E621A2EA640095C26E /* MusicAggregationSearch */,
 				736ED2FB21A2EA640095C26E /* MusicAggregationSearchTests */,
 				736ED2E521A2EA640095C26E /* Products */,
+				A188C1B321B3D82000C1FD52 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +113,14 @@
 				736ED2FE21A2EA640095C26E /* Info.plist */,
 			);
 			path = MusicAggregationSearchTests;
+			sourceTree = "<group>";
+		};
+		A188C1B321B3D82000C1FD52 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A188C1B421B3D82000C1FD52 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

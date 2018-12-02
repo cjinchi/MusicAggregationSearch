@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import AVFoundation
+import AVKit
 
-class SearchTableViewController: UITableViewController,UISearchBarDelegate{
+class SearchTableViewController: UITableViewController,UISearchBarDelegate,URLSessionDownloadDelegate{
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        
+    }
+    
 
     
     @IBOutlet weak var keywordSearchBar: UISearchBar!
@@ -16,13 +22,16 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate{
     
     var results = [Song]()
     var songSourceImages = [SongSource:UIImage]()
+    let query = Query()
+    var updatding = false
     
     private func loadSampleSongs(){
-        let song1 = Song(title: "我爱南京", artist: "李志",source: .WY)
-        let song2 = Song(title: "New Boy", artist: "朴树", source: .QQ)
-        let song3 = Song(title: "一切", artist: "程璧", source: .XM)
+//        let song1 = Song(title: "我爱南京", artist: "李志",source: .WY)
+//        let song2 = Song(title: "New Boy", artist: "朴树", source: .QQ)
+//        let song3 = Song(title: "一切", artist: "程璧", source: .XM)
+//
+//        results += [song1,song2,song3]
         
-        results += [song1,song2,song3]
         
     }
     
@@ -47,9 +56,49 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate{
 
     // MARK: - Table view data source
     
+    func playSong(song:Song){
+        
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         print(indexPath.row)
+        
+        if results[indexPath.row].source == .KG{
+            print("can't play now")
+        }else{
+            
+            do {
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+                try AVAudioSession.sharedInstance().setActive(true)
+            } catch {
+                print(error)
+            }
+            
+            print("to play")
+            print(results[indexPath.row].downloadInfo)
+            let songUrl = NSURL(string: results[indexPath.row].downloadInfo)!
+            let player = AVPlayer(url: songUrl as URL)
+            let playerViewController = AVPlayerViewController()
+            playerViewController.player = player
+//            playerViewController.view.frame = CGRect(x: 0, y: 0, width: 5, height: 5)
+
+//            playerViewController.entersFullScreenWhenPlaybackBegins = true
+//            playerViewController.exitsFullScreenWhenPlaybackEnds = true
+            present(playerViewController, animated: true, completion: nil)
+            
+
+//            self.view.addSubview(playerViewController.view)
+//            self.addChild(playerViewController)
+            
+            player.play()
+//            let playerLayer = AVPlayerLayer(player: player)
+//            playerLayer.frame = CGRect(x: 10, y: 30, width: self.view.bounds.size.width-10, height: 200)
+//            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
+//            self.view.layer.addSublayer(playerLayer)
+//            player.play()
+//            print("play finish")
+        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -79,10 +128,17 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        updatding = true
         
+        query.getResultsFromAllSource(keyword: searchBar.text!){songs in
+            self.results = songs
+            self.tableView.reloadData()
+            
+        }
         
         
         self.tableView.reloadData()
+        updatding = false
         
     }
     
