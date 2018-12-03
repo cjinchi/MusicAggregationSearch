@@ -152,4 +152,139 @@ class Query{
             break
         }
     }
+    
+    func getKGSongUrl(hash:String,completion:@escaping (String)->()){
+        print("here 1")
+        var urlCompoments = URLComponents(string: "http://m.kugou.com/app/i/getSongInfo.php");
+        urlCompoments?.query = "cmd=playInfo&hash=\(hash)"
+        guard let url = urlCompoments?.url else {
+            print("error when get url")
+            return
+        }
+        
+        let dataTask = urlSession.dataTask(with: url){data,response,error in
+            print("here 2")
+            if let e = error{
+                print(e.localizedDescription)
+            }else if let d = data,let res = response as? HTTPURLResponse,res.statusCode == 200{
+                print("here 3")
+                
+                var dic : [String:Any]
+                do{
+                    dic = try (JSONSerialization.jsonObject(with: d, options: []) as? [String:Any])!
+                } catch{
+                    print("json error")
+                    return
+                }
+                if let mp3Url = dic["url"] as? String{
+                    print("here 4")
+                    DispatchQueue.main.async {
+                        completion(mp3Url)
+                    }
+                }
+                
+            }
+        }
+        dataTask.resume()
+    }
+    
+    func getHotSongList(completion:@escaping ([Song])->()) -> () {
+        var urlCompoments = URLComponents(string: "http://m.kugou.com/rank/info/")
+        urlCompoments?.query = "rankid=8888&page=1&json=true"
+        guard let url = urlCompoments?.url else {
+            print("error when get url")
+            return
+        }
+        let dataTask = urlSession.dataTask(with: url){data,response,error in
+            print("here 2")
+            if let e = error{
+                print(e.localizedDescription)
+            }else if let d = data,let res = response as? HTTPURLResponse,res.statusCode == 200{
+                var hotResults = [Song]()
+                var dic : [String:Any]
+                do{
+                    dic = try (JSONSerialization.jsonObject(with: d, options: []) as? [String:Any])!
+                } catch{
+                    print("json error")
+                    return
+                }
+                if let songs = dic["songs"] as? [String:Any],
+                    let list = songs["list"] as? [Any]{
+                    for item in list{
+                        if let item = item as? [String:Any],
+                            let filename = item["filename"] as? String,
+                        let remark = item["remark"] as? String,
+                            let hash = item["hash"] as? String{
+                            hotResults.append(Song(title: filename, artist: remark, source: .KG, downloadInfo: hash))
+                        }
+                    }
+                    DispatchQueue.main.async {
+                        completion(hotResults)
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        dataTask.resume()
+    }
+    
+    func getNearbySongList(completion:@escaping ([Song])->()) -> (){
+        let urlCompoments = URLComponents(string: "http://111.231.74.95/data")
+        guard let url = urlCompoments?.url else {
+            print("error when get url")
+            return
+        }
+        let dataTask = urlSession.dataTask(with: url){data,response,error in
+            print("here 2")
+            if let e = error{
+                print(e.localizedDescription)
+            }else if let d = data,let res = response as? HTTPURLResponse,res.statusCode == 200{
+                print("here in near")
+                var nearbyResults = [Song]()
+                var dic : [String:Any]
+                do{
+                    dic = try (JSONSerialization.jsonObject(with: d, options: []) as? [String:Any])!
+                } catch{
+                    print("json error")
+                    return
+                }
+                if let res = dic["results"] as? [Any]{
+                        print("here in results")
+                        for item in res{
+                            print("here item")
+                            if let item = item as? [String:Any],
+                                let title = item["title"] as? String,
+                            let info = item["info"] as? String,
+                            let source = item["source"] as? Int,
+                            let downloadInfo = item["download"] as? String{
+                                print("here append")
+                                nearbyResults.append(Song(title: title, artist: info, source: SongSource(rawValue: source)!, downloadInfo: downloadInfo))
+                                print("nearby")
+                            }
+                    }
+                    DispatchQueue.main.async {
+                        completion(nearbyResults)
+                    }
+                }
+                
+            }
+            
+        }
+        dataTask.resume()
+    }
+    
+    func updateData(song:Song) -> (){
+        var urlCompoments = URLComponents(string: "http://111.231.74.95/update")
+        urlCompoments?.query = "title=\(song.title)&info=\(song.artist)&download=\(song.downloadInfo)&source=\(song.source.rawValue)"
+        guard let url = urlCompoments?.url else {
+            print("error when get url")
+            return
+        }
+        let dataTask = urlSession.dataTask(with: url){data,response,error in
+            
+        }
+        dataTask.resume()
+    }
 }

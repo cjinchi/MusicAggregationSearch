@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum SongSource:CaseIterable{
-    case QQ,WY,KG
+enum SongSource:Int,CaseIterable{
+    case QQ = 0,WY,KG
     
     var imageName:String{
         switch self {

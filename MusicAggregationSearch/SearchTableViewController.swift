@@ -15,7 +15,23 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate,URLSe
         
     }
     
+    @IBAction func toPause(_ sender: Any) {
+//            rightBarButton. = UIBarButtonItem.SystemItem.play
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+        self.navigationItem.leftBarButtonItem?.isEnabled = true
+        player?.pause()
 
+    }
+    
+    @IBAction func toPlay(_ sender: Any) {
+
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
+        self.navigationItem.leftBarButtonItem?.isEnabled = false
+        player?.play()
+        
+    }
+    
+    
     
     @IBOutlet weak var keywordSearchBar: UISearchBar!
     let searchController = UISearchController(searchResultsController: nil)
@@ -47,6 +63,8 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate,URLSe
         
         loadSampleSongs()
         
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+        self.navigationItem.leftBarButtonItem?.isEnabled = false
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -57,24 +75,27 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate,URLSe
 
     // MARK: - Table view data source
     
-    func playSong(song:Song){
-        
-    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         print(indexPath.row)
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print(error)
+        }
         
+        query.updateData(song: results[indexPath.row])
         if results[indexPath.row].source == .KG{
-            print("can't play now")
+            query.getKGSongUrl(hash: results[indexPath.row].downloadInfo){mp3Url in
+                print(mp3Url)
+                self.playSong(stringUrl: mp3Url)
+                
+            }
         }else{
             
-            do {
-                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
-                try AVAudioSession.sharedInstance().setActive(true)
-            } catch {
-                print(error)
-            }
+
             
 //            print("to play")
 //            print(results[indexPath.row].downloadInfo)
@@ -85,25 +106,32 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate,URLSe
 //            present(playerViewController, animated: true, completion: nil)
 //            player.play()
 //            player.pau
-            
-            player?.pause()
-            let songUrl = NSURL(string: results[indexPath.row].downloadInfo)!
-//            let player = AVPlayer(url: songUrl as URL)
-            player = AVPlayer(url: songUrl as URL)
+            playSong(stringUrl: results[indexPath.row].downloadInfo+"&br=128000")
 
-            let playerLayer = AVPlayerLayer(player: player)
-            playerLayer.frame = CGRect(x: 10, y: 30, width: 100, height: 200)
-            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
-            self.view.layer.addSublayer(playerLayer)
-            
-            print(player?.timeControlStatus == AVPlayer.TimeControlStatus.paused);
-            
-            player?.play()
-            
-            print(player?.timeControlStatus == AVPlayer.TimeControlStatus.playing)
 
             
         }
+    }
+    
+    func playSong(stringUrl:String) -> (){
+        player?.pause()
+        let songUrl = NSURL(string: stringUrl)!
+        //            let player = AVPlayer(url: songUrl as URL)
+        player = AVPlayer(url: songUrl as URL)
+        
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = CGRect(x: 10, y: 30, width: 100, height: 200)
+        playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
+        self.view.layer.addSublayer(playerLayer)
+        
+        print(player?.timeControlStatus == AVPlayer.TimeControlStatus.paused);
+        
+        player?.play()
+        
+        print(player?.timeControlStatus == AVPlayer.TimeControlStatus.playing)
+        
+        self.navigationItem.leftBarButtonItem?.isEnabled = false
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
