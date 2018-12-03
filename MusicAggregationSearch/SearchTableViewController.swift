@@ -24,6 +24,7 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate,URLSe
     var songSourceImages = [SongSource:UIImage]()
     let query = Query()
     var updatding = false
+    var player :AVPlayer? = nil
     
     private func loadSampleSongs(){
 //        let song1 = Song(title: "我爱南京", artist: "李志",source: .WY)
@@ -75,29 +76,33 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate,URLSe
                 print(error)
             }
             
-            print("to play")
-            print(results[indexPath.row].downloadInfo)
-            let songUrl = NSURL(string: results[indexPath.row].downloadInfo)!
-            let player = AVPlayer(url: songUrl as URL)
-            let playerViewController = AVPlayerViewController()
-            playerViewController.player = player
-//            playerViewController.view.frame = CGRect(x: 0, y: 0, width: 5, height: 5)
-
-//            playerViewController.entersFullScreenWhenPlaybackBegins = true
-//            playerViewController.exitsFullScreenWhenPlaybackEnds = true
-            present(playerViewController, animated: true, completion: nil)
-            
-
-//            self.view.addSubview(playerViewController.view)
-//            self.addChild(playerViewController)
-            
-            player.play()
-//            let playerLayer = AVPlayerLayer(player: player)
-//            playerLayer.frame = CGRect(x: 10, y: 30, width: self.view.bounds.size.width-10, height: 200)
-//            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
-//            self.view.layer.addSublayer(playerLayer)
+//            print("to play")
+//            print(results[indexPath.row].downloadInfo)
+//            let songUrl = NSURL(string: results[indexPath.row].downloadInfo)!
+//            let player = AVPlayer(url: songUrl as URL)
+//            let playerViewController = AVPlayerViewController()
+//            playerViewController.player = player
+//            present(playerViewController, animated: true, completion: nil)
 //            player.play()
-//            print("play finish")
+//            player.pau
+            
+            player?.pause()
+            let songUrl = NSURL(string: results[indexPath.row].downloadInfo)!
+//            let player = AVPlayer(url: songUrl as URL)
+            player = AVPlayer(url: songUrl as URL)
+
+            let playerLayer = AVPlayerLayer(player: player)
+            playerLayer.frame = CGRect(x: 10, y: 30, width: 100, height: 200)
+            playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
+            self.view.layer.addSublayer(playerLayer)
+            
+            print(player?.timeControlStatus == AVPlayer.TimeControlStatus.paused);
+            
+            player?.play()
+            
+            print(player?.timeControlStatus == AVPlayer.TimeControlStatus.playing)
+
+            
         }
     }
 
