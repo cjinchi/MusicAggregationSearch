@@ -18,9 +18,9 @@
 		A180A10C21B23AAC006F77C4 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = A180A10B21B23AAC006F77C4 /* Song.swift */; };
 		A180A10E21B23B44006F77C4 /* SongSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A180A10D21B23B44006F77C4 /* SongSource.swift */; };
 		A180A11221B2DB47006F77C4 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = A180A11121B2DB47006F77C4 /* Query.swift */; };
-		A188C1B521B3D82000C1FD52 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A188C1B421B3D82000C1FD52 /* AVFoundation.framework */; };
 		A1C9545121B57C65009A93D4 /* RankingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C9545021B57C65009A93D4 /* RankingTableViewController.swift */; };
 		A1C9545321B58E34009A93D4 /* NearbyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C9545221B58E34009A93D4 /* NearbyTableViewController.swift */; };
+		A1C9545621B5A6FB009A93D4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A188C1B421B3D82000C1FD52 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +52,7 @@
 		A188C1B421B3D82000C1FD52 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A1C9545021B57C65009A93D4 /* RankingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewController.swift; sourceTree = "<group>"; };
 		A1C9545221B58E34009A93D4 /* NearbyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyTableViewController.swift; sourceTree = "<group>"; };
+		A1C9545421B5A6C1009A93D4 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A188C1B521B3D82000C1FD52 /* AVFoundation.framework in Frameworks */,
+				A1C9545621B5A6FB009A93D4 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +125,7 @@
 		A188C1B321B3D82000C1FD52 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1C9545421B5A6C1009A93D4 /* AVKit.framework */,
 				A188C1B421B3D82000C1FD52 /* AVFoundation.framework */,
 			);
 			name = Frameworks;
@@ -403,6 +405,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9W7TYL7FP3;
 				INFOPLIST_FILE = MusicAggregationSearch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -421,6 +424,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9W7TYL7FP3;
 				INFOPLIST_FILE = MusicAggregationSearch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
