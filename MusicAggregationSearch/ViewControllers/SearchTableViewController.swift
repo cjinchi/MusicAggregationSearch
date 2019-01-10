@@ -15,6 +15,8 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate{
     @IBOutlet weak var keywordSearchBar: UISearchBar!
     let searchController = UISearchController(searchResultsController: nil)
     
+    static var stvc:SearchTableViewController?
+    
     var results = [Song]()
     var songSourceImages = [SongSource:UIImage]()
     let query = Query()
@@ -23,6 +25,8 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SearchTableViewController.stvc = self
         
         keywordSearchBar.delegate = self
         
@@ -130,7 +134,7 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate{
 //        updatding = true
         
         query.getResultsFromAllSource(keyword: searchBar.text!){songs in
-            self.results = songs
+            self.results = Filter.dumplicateFilter(rawData: songs)
             self.tableView.reloadData()
             
         }
@@ -198,6 +202,11 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate{
     
     @IBAction func showDetail(_ sender: UIBarButtonItem) {
         self.navigationController?.pushViewController(App.playViewController, animated: true)
+    }
+    
+    func searchRecognitionSong(title :String){
+        self.keywordSearchBar.text = title
+        self.searchBarSearchButtonClicked(keywordSearchBar)
     }
     
 }

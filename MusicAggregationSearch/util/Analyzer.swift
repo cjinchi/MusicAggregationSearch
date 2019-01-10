@@ -69,4 +69,27 @@ class Analyzer {
         }
         return results
     }
+    
+    static func getRecognitionResult(data:String?)->String?{
+        if data == nil{
+            return nil
+        }
+        
+        var dic : [String:Any]
+        do{
+            let d = data?.data(using: String.Encoding.utf8)
+            dic = try (JSONSerialization.jsonObject(with: d!, options: []) as? [String:Any])!
+        }catch{
+            return nil
+        }
+        
+        if let metadata = dic["metadata"] as? [String:Any],
+            let music = metadata["music"] as? [Any],
+            let music0 = music[0] as? [String:Any],
+            let resultTitle = music0["title"]{
+            return resultTitle as? String
+        }
+        
+        return ""
+    }
 }

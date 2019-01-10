@@ -15,14 +15,21 @@ class RecognitionViewController: UIViewController {
     
     @IBOutlet weak var playControlButton: UIButton!
     
+    @IBOutlet weak var resultLabel: UILabel!
+    
+    @IBOutlet weak var toPlayButton: UIButton!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        toPlayButton.layer.cornerRadius = 10
+        toPlayButton.isHidden = true
+        
         let config = ACRCloudConfig()
-        config.accessKey = "b836613c8384b46f18f6de6938f68e01"
-        config.accessSecret = "yWji5tCxDfB5w5qY2ax8qFcxM8CJBEMyOkM7G1cU"
-        config.host = "identify-us-west-2.acrcloud.com"
+        config.accessKey = "0e956b350321c91ab68f949acf8ea651"
+        config.accessSecret = "infsj7LHfdLGfgqvccwe8OAaAL71GQdRI6VvYqlz"
+        config.host = "identify-cn-north-1.acrcloud.com"
         config.recMode = rec_mode_remote
         config.requestTimeout = 10
         config.protocol = "https"
@@ -36,10 +43,20 @@ class RecognitionViewController: UIViewController {
         }
         
         config.resultBlock = {result, resType in
-            print("result block ",result!)
+            DispatchQueue.main.async {
+                if let resultStr = Analyzer.getRecognitionResult(data: result){
+                    self.client?.stopRecordRec()
+                    self.started = false
+                    self.resultLabel.text = resultStr
+                    self.toPlayButton.isHidden = false
+                }
+                
+            }
         }
         
         self.client = ACRCloudRecognition(config: config)
+        
+        resultLabel.text = ""
 
         // Do any additional setup after loading the view.
     }
@@ -57,17 +74,27 @@ class RecognitionViewController: UIViewController {
     
     @IBAction func controlButtonClicked(_ sender: UIButton) {
         if started{
-            return
+            client?.stopRecordRec()
+            started = false
+            resultLabel.text = "很遗憾，没有找到相关歌曲。"
+        }else{
+            client?.startRecordRec()
+            started = true
+            resultLabel.text = "正在聆听..."
         }
         
-        client?.startRecordRec()
-        started = true
+        toPlayButton.isHidden = true
+        
     }
     
-    @IBAction func stopButtonClicked(_ sender: UIButton) {
-        client?.stopRecordRec()
-        started = false
+    @IBAction func toPlay(_ sender: UIButton) {
+        if let stvc = SearchTableViewController.stvc{
+            stvc.searchRecognitionSong(title: resultLabel.text!)
+        }
+        self.navigationController?.popViewController(animated: true)
     }
+    
+    
     
     
 

@@ -28,10 +28,11 @@ class RankingTableViewController: UITableViewController {
         Ranking.getAllRanking(){result in
             print("123")
             self.results.removeAll()
-            for i in result{
-                self.results.append(i)
-            }
+//            for i in result{
+//                self.results.append(i)
+//            }
         
+            self.results = Filter.dumplicateFilter(rawData: result)
             self.tableView.reloadData()
         }
         

@@ -2,6 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>New item - 3</key>
+			<string></string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>0</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>听歌识曲</string>
+		</dict>
+	</array>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>for record</string>
 	<key>UIBackgroundModes</key>

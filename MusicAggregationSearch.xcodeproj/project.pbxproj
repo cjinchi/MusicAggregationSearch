@@ -17,6 +17,7 @@
 		A13D2FA021E7A081003FE6FE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A13D2F9F21E7A081003FE6FE /* AudioToolbox.framework */; };
 		A13D2FA221E7A089003FE6FE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A13D2FA121E7A089003FE6FE /* Security.framework */; };
 		A13D2FA421E7A099003FE6FE /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A13D2FA321E7A099003FE6FE /* libc++.tbd */; };
+		A13D2FA621E7B67D003FE6FE /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13D2FA521E7B67D003FE6FE /* Filter.swift */; };
 		A167C8B521E6DF310002F366 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167C8B421E6DF310002F366 /* PlayViewController.swift */; };
 		A167C8B921E708010002F366 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167C8B821E708010002F366 /* Downloader.swift */; };
 		A167C8BB21E753200002F366 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167C8BA21E753200002F366 /* App.swift */; };
@@ -58,6 +59,7 @@
 		A13D2F9F21E7A081003FE6FE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A13D2FA121E7A089003FE6FE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A13D2FA321E7A099003FE6FE /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		A13D2FA521E7B67D003FE6FE /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		A167C8B421E6DF310002F366 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		A167C8B821E708010002F366 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		A167C8BA21E753200002F366 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				A167C8DD21E7979F0002F366 /* RecognitionViewController.swift */,
+				A13D2FA521E7B67D003FE6FE /* Filter.swift */,
 				A1C9545021B57C65009A93D4 /* RankingTableViewController.swift */,
 				A1C9545221B58E34009A93D4 /* NearbyTableViewController.swift */,
 				736ED30721A2EF770095C26E /* SearchTableViewController.swift */,
@@ -325,6 +328,7 @@
 				A167C8C021E7731A0002F366 /* Analyzer.swift in Sources */,
 				736ED2E821A2EA640095C26E /* AppDelegate.swift in Sources */,
 				A167C8BB21E753200002F366 /* App.swift in Sources */,
+				A13D2FA621E7B67D003FE6FE /* Filter.swift in Sources */,
 				A180A10C21B23AAC006F77C4 /* Song.swift in Sources */,
 				A180A10E21B23B44006F77C4 /* SongSource.swift in Sources */,
 			);

@@ -145,7 +145,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="atg-9I-GgQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4215" y="-33.802816901408448"/>
+            <point key="canvasLocation" x="4048" y="-294"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="aFE-PB-YJy">
@@ -221,12 +221,22 @@
                                     <action selector="controlButtonClicked:" destination="ecJ-jT-5Ie" eventType="touchUpInside" id="Axb-v7-VIg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7J3-Wq-Uni">
-                                <rect key="frame" x="145" y="317" width="31" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7q-eR-v3j">
+                                <rect key="frame" x="16" y="316" width="288" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="stop"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="827-Bf-tb5">
+                                <rect key="frame" x="84" y="389" width="152" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="去播放">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <action selector="stopButtonClicked:" destination="ecJ-jT-5Ie" eventType="touchUpInside" id="glp-tx-nZD"/>
+                                    <action selector="toPlay:" destination="ecJ-jT-5Ie" eventType="touchUpInside" id="PmR-tk-d3U"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -235,11 +245,13 @@
                     </view>
                     <connections>
                         <outlet property="playControlButton" destination="l6c-Fq-ys0" id="juu-Pi-yst"/>
+                        <outlet property="resultLabel" destination="B7q-eR-v3j" id="YIw-Ct-drX"/>
+                        <outlet property="toPlayButton" destination="827-Bf-tb5" id="lqi-xH-uQ2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUh-nm-C5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4781" y="-357"/>
+            <point key="canvasLocation" x="4779.375" y="-357.04225352112678"/>
         </scene>
         <!--Play View Controller-->
         <scene sceneID="k6u-JA-Ish">
