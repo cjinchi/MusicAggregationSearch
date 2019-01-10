@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import AVKit
+import CoreData
 
 class SearchTableViewController: UITableViewController,UISearchBarDelegate{
     
@@ -33,6 +34,35 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate{
         for source in SongSource.allCases{
             songSourceImages[source] = UIImage(named: source.imageName)
         }
+        
+        
+        let managedObectContext = NSPersistentContainer(name: "SongList").viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "SongList", in: managedObectContext)
+        let song = NSManagedObject(entity: entity!, insertInto: managedObectContext)
+        song.setValue("text", forKey: "title")
+        do {
+            try managedObectContext.save()
+        } catch  {
+            fatalError("无法保存")
+        }
+        
+        let managedObectContext2 = NSPersistentContainer(name: "SongList").viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SongList")
+
+        do {
+            let fetchedResults = try managedObectContext2.fetch(fetchRequest) as? [NSManagedObject]
+            if let results = fetchedResults {
+                print(results.count)
+                
+                tableView.reloadData()
+            }else{
+                print("fail core data")
+            }
+            
+        } catch  {
+            fatalError("获取失败")
+        }
+    
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

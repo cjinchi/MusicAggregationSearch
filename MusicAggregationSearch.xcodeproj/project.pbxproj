@@ -18,6 +18,10 @@
 		A13D2FA221E7A089003FE6FE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A13D2FA121E7A089003FE6FE /* Security.framework */; };
 		A13D2FA421E7A099003FE6FE /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A13D2FA321E7A099003FE6FE /* libc++.tbd */; };
 		A13D2FA621E7B67D003FE6FE /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13D2FA521E7B67D003FE6FE /* Filter.swift */; };
+		A13D2FA921E7BF12003FE6FE /* SongList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A13D2FA721E7BF12003FE6FE /* SongList.xcdatamodeld */; };
+		A13D2FAC21E7C0D6003FE6FE /* SongList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13D2FAA21E7C0D6003FE6FE /* SongList+CoreDataClass.swift */; };
+		A13D2FAD21E7C0D6003FE6FE /* SongList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13D2FAB21E7C0D6003FE6FE /* SongList+CoreDataProperties.swift */; };
+		A13D2FAF21E7C3E9003FE6FE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A13D2FAE21E7C3E9003FE6FE /* CoreData.framework */; };
 		A167C8B521E6DF310002F366 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167C8B421E6DF310002F366 /* PlayViewController.swift */; };
 		A167C8B921E708010002F366 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167C8B821E708010002F366 /* Downloader.swift */; };
 		A167C8BB21E753200002F366 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167C8BA21E753200002F366 /* App.swift */; };
@@ -60,6 +64,10 @@
 		A13D2FA121E7A089003FE6FE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		A13D2FA321E7A099003FE6FE /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		A13D2FA521E7B67D003FE6FE /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		A13D2FA821E7BF12003FE6FE /* SongList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SongList.xcdatamodel; sourceTree = "<group>"; };
+		A13D2FAA21E7C0D6003FE6FE /* SongList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SongList+CoreDataClass.swift"; path = "MusicAggregationSearch/SongList+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A13D2FAB21E7C0D6003FE6FE /* SongList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SongList+CoreDataProperties.swift"; path = "MusicAggregationSearch/SongList+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A13D2FAE21E7C3E9003FE6FE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A167C8B421E6DF310002F366 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		A167C8B821E708010002F366 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		A167C8BA21E753200002F366 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -85,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A13D2FAF21E7C3E9003FE6FE /* CoreData.framework in Frameworks */,
 				A13D2FA421E7A099003FE6FE /* libc++.tbd in Frameworks */,
 				A13D2FA221E7A089003FE6FE /* Security.framework in Frameworks */,
 				A13D2FA021E7A081003FE6FE /* AudioToolbox.framework in Frameworks */,
@@ -106,6 +115,8 @@
 		736ED2DB21A2EA640095C26E = {
 			isa = PBXGroup;
 			children = (
+				A13D2FAA21E7C0D6003FE6FE /* SongList+CoreDataClass.swift */,
+				A13D2FAB21E7C0D6003FE6FE /* SongList+CoreDataProperties.swift */,
 				736ED2E621A2EA640095C26E /* MusicAggregationSearch */,
 				736ED2FB21A2EA640095C26E /* MusicAggregationSearchTests */,
 				736ED2E521A2EA640095C26E /* Products */,
@@ -136,6 +147,7 @@
 				736ED2EE21A2EA640095C26E /* Assets.xcassets */,
 				736ED2F021A2EA640095C26E /* LaunchScreen.storyboard */,
 				736ED2F321A2EA640095C26E /* Info.plist */,
+				A13D2FA721E7BF12003FE6FE /* SongList.xcdatamodeld */,
 				A177AC9421E64D12003DBCE7 /* SongPlayer.swift */,
 			);
 			path = MusicAggregationSearch;
@@ -205,6 +217,7 @@
 		A188C1B321B3D82000C1FD52 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A13D2FAE21E7C3E9003FE6FE /* CoreData.framework */,
 				A13D2FA321E7A099003FE6FE /* libc++.tbd */,
 				A13D2FA121E7A089003FE6FE /* Security.framework */,
 				A13D2F9F21E7A081003FE6FE /* AudioToolbox.framework */,
@@ -316,13 +329,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A167C8B921E708010002F366 /* Downloader.swift in Sources */,
+				A13D2FAD21E7C0D6003FE6FE /* SongList+CoreDataProperties.swift in Sources */,
 				A1C9545121B57C65009A93D4 /* RankingTableViewController.swift in Sources */,
+				A13D2FAC21E7C0D6003FE6FE /* SongList+CoreDataClass.swift in Sources */,
 				A180A10A21B22E8C006F77C4 /* SongTableViewCell.swift in Sources */,
 				A1C9545321B58E34009A93D4 /* NearbyTableViewController.swift in Sources */,
 				A177AC9521E64D12003DBCE7 /* SongPlayer.swift in Sources */,
 				A167C8BD21E7702E0002F366 /* Ranking.swift in Sources */,
 				A180A11221B2DB47006F77C4 /* Query.swift in Sources */,
 				A167C8DE21E7979F0002F366 /* RecognitionViewController.swift in Sources */,
+				A13D2FA921E7BF12003FE6FE /* SongList.xcdatamodeld in Sources */,
 				736ED30821A2EF770095C26E /* SearchTableViewController.swift in Sources */,
 				A167C8B521E6DF310002F366 /* PlayViewController.swift in Sources */,
 				A167C8C021E7731A0002F366 /* Analyzer.swift in Sources */,
@@ -607,6 +623,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A13D2FA721E7BF12003FE6FE /* SongList.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A13D2FA821E7BF12003FE6FE /* SongList.xcdatamodel */,
+			);
+			currentVersion = A13D2FA821E7BF12003FE6FE /* SongList.xcdatamodel */;
+			path = SongList.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 736ED2DC21A2EA640095C26E /* Project object */;
 }
