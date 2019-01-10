@@ -19,7 +19,7 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate{
     var songSourceImages = [SongSource:UIImage]()
     let query = Query()
     let playViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detail") as! PlayViewController
-    var updatding = false
+//    var updatding = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +41,12 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate{
             print(error)
         }
         
- 
-        self.navigationController?.pushViewController(playViewController, animated: true)
-        query.updateData(song: results[indexPath.row])
+        App.playViewController.updateWith(newSongToPlay: results[indexPath.row])
+
+        self.navigationController?.pushViewController(App.playViewController, animated: true)
+        
+        
+        Query.updateData(song: results[indexPath.row])
 
 //        songUrl: results[indexPath.row].downloadUrl+"&br=128000"
 //        playSong(stringUrl: results[indexPath.row].downloadInfo+"&br=128000")
@@ -73,29 +76,29 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate{
 //        }
     }
     
-    func playSong(stringUrl:String) -> (){
-//        player?.pause()
-        if queuePlayer == nil{
-            queuePlayer = AVQueuePlayer()
-        }
-        queuePlayer?.pause()
-        queuePlayer?.removeAllItems()
-        let songUrl = NSURL(string: stringUrl)!
-        //            let player = AVPlayer(url: songUrl as URL)
-        let playerItem = AVPlayerItem(url: songUrl as URL)
-        queuePlayer?.insert(playerItem, after: nil)
-//        player = AVPlayer(playerItem: playerItem)
-        
-        let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = CGRect(x: 10, y: 30, width: 100, height: 200)
-        playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
-        self.view.layer.addSublayer(playerLayer)
-        
-        queuePlayer?.play()
-        
-//        self.navigationItem.leftBarButtonItem?.isEnabled = false
-//        self.navigationItem.rightBarButtonItem?.isEnabled = true
-    }
+//    func playSong(stringUrl:String) -> (){
+////        player?.pause()
+//        if queuePlayer == nil{
+//            queuePlayer = AVQueuePlayer()
+//        }
+//        queuePlayer?.pause()
+//        queuePlayer?.removeAllItems()
+//        let songUrl = NSURL(string: stringUrl)!
+//        //            let player = AVPlayer(url: songUrl as URL)
+//        let playerItem = AVPlayerItem(url: songUrl as URL)
+//        queuePlayer?.insert(playerItem, after: nil)
+////        player = AVPlayer(playerItem: playerItem)
+//
+//        let playerLayer = AVPlayerLayer(player: player)
+//        playerLayer.frame = CGRect(x: 10, y: 30, width: 100, height: 200)
+//        playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
+//        self.view.layer.addSublayer(playerLayer)
+//
+//        queuePlayer?.play()
+//
+////        self.navigationItem.leftBarButtonItem?.isEnabled = false
+////        self.navigationItem.rightBarButtonItem?.isEnabled = true
+//    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -124,7 +127,7 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate{
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        updatding = true
+//        updatding = true
         
         query.getResultsFromAllSource(keyword: searchBar.text!){songs in
             self.results = songs
@@ -134,7 +137,7 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate{
         
         
         self.tableView.reloadData()
-        updatding = false
+//        updatding = false
         
     }
     
@@ -191,5 +194,10 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate{
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        <#code#>
 //    }
-
+    
+    
+    @IBAction func showDetail(_ sender: UIBarButtonItem) {
+        self.navigationController?.pushViewController(App.playViewController, animated: true)
+    }
+    
 }

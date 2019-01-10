@@ -13,11 +13,16 @@
 		736ED2F221A2EA640095C26E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 736ED2F021A2EA640095C26E /* LaunchScreen.storyboard */; };
 		736ED2FD21A2EA640095C26E /* MusicAggregationSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736ED2FC21A2EA640095C26E /* MusicAggregationSearchTests.swift */; };
 		736ED30821A2EF770095C26E /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736ED30721A2EF770095C26E /* SearchTableViewController.swift */; };
+		A13D2F9E21E7A034003FE6FE /* libACRCloud_IOS_SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A13D2F9D21E7A034003FE6FE /* libACRCloud_IOS_SDK.a */; };
+		A13D2FA021E7A081003FE6FE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A13D2F9F21E7A081003FE6FE /* AudioToolbox.framework */; };
+		A13D2FA221E7A089003FE6FE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A13D2FA121E7A089003FE6FE /* Security.framework */; };
+		A13D2FA421E7A099003FE6FE /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A13D2FA321E7A099003FE6FE /* libc++.tbd */; };
 		A167C8B521E6DF310002F366 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167C8B421E6DF310002F366 /* PlayViewController.swift */; };
 		A167C8B921E708010002F366 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167C8B821E708010002F366 /* Downloader.swift */; };
 		A167C8BB21E753200002F366 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167C8BA21E753200002F366 /* App.swift */; };
 		A167C8BD21E7702E0002F366 /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167C8BC21E7702E0002F366 /* Ranking.swift */; };
 		A167C8C021E7731A0002F366 /* Analyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167C8BF21E7731A0002F366 /* Analyzer.swift */; };
+		A167C8DE21E7979F0002F366 /* RecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167C8DD21E7979F0002F366 /* RecognitionViewController.swift */; };
 		A177AC9521E64D12003DBCE7 /* SongPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A177AC9421E64D12003DBCE7 /* SongPlayer.swift */; };
 		A180A10A21B22E8C006F77C4 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A180A10921B22E8C006F77C4 /* SongTableViewCell.swift */; };
 		A180A10C21B23AAC006F77C4 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = A180A10B21B23AAC006F77C4 /* Song.swift */; };
@@ -49,11 +54,19 @@
 		736ED2FC21A2EA640095C26E /* MusicAggregationSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAggregationSearchTests.swift; sourceTree = "<group>"; };
 		736ED2FE21A2EA640095C26E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		736ED30721A2EF770095C26E /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		A13D2F9D21E7A034003FE6FE /* libACRCloud_IOS_SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libACRCloud_IOS_SDK.a; sourceTree = "<group>"; };
+		A13D2F9F21E7A081003FE6FE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A13D2FA121E7A089003FE6FE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A13D2FA321E7A099003FE6FE /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		A167C8B421E6DF310002F366 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		A167C8B821E708010002F366 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		A167C8BA21E753200002F366 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		A167C8BC21E7702E0002F366 /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
 		A167C8BF21E7731A0002F366 /* Analyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analyzer.swift; sourceTree = "<group>"; };
+		A167C8D921E796340002F366 /* ACRCloudRecognition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACRCloudRecognition.h; sourceTree = "<group>"; };
+		A167C8DA21E796340002F366 /* ACRCloudConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACRCloudConfig.h; sourceTree = "<group>"; };
+		A167C8DC21E7964D0002F366 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		A167C8DD21E7979F0002F366 /* RecognitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionViewController.swift; sourceTree = "<group>"; };
 		A177AC9421E64D12003DBCE7 /* SongPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongPlayer.swift; sourceTree = "<group>"; };
 		A180A10921B22E8C006F77C4 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		A180A10B21B23AAC006F77C4 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
@@ -70,7 +83,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A13D2FA421E7A099003FE6FE /* libc++.tbd in Frameworks */,
+				A13D2FA221E7A089003FE6FE /* Security.framework in Frameworks */,
+				A13D2FA021E7A081003FE6FE /* AudioToolbox.framework in Frameworks */,
 				A1C9545621B5A6FB009A93D4 /* AVFoundation.framework in Frameworks */,
+				A13D2F9E21E7A034003FE6FE /* libACRCloud_IOS_SDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +123,7 @@
 		736ED2E621A2EA640095C26E /* MusicAggregationSearch */ = {
 			isa = PBXGroup;
 			children = (
+				A167C8D721E795E60002F366 /* lib */,
 				A167C8BE21E773070002F366 /* util */,
 				A167C8B721E707BD0002F366 /* Model */,
 				A167C8B621E707A70002F366 /* Network */,
@@ -133,6 +151,7 @@
 		A167C8B321E6DD190002F366 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A167C8DD21E7979F0002F366 /* RecognitionViewController.swift */,
 				A1C9545021B57C65009A93D4 /* RankingTableViewController.swift */,
 				A1C9545221B58E34009A93D4 /* NearbyTableViewController.swift */,
 				736ED30721A2EF770095C26E /* SearchTableViewController.swift */,
@@ -169,9 +188,23 @@
 			path = util;
 			sourceTree = "<group>";
 		};
+		A167C8D721E795E60002F366 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				A13D2F9D21E7A034003FE6FE /* libACRCloud_IOS_SDK.a */,
+				A167C8DA21E796340002F366 /* ACRCloudConfig.h */,
+				A167C8D921E796340002F366 /* ACRCloudRecognition.h */,
+				A167C8DC21E7964D0002F366 /* Bridging-Header.h */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
 		A188C1B321B3D82000C1FD52 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A13D2FA321E7A099003FE6FE /* libc++.tbd */,
+				A13D2FA121E7A089003FE6FE /* Security.framework */,
+				A13D2F9F21E7A081003FE6FE /* AudioToolbox.framework */,
 				A1C9545421B5A6C1009A93D4 /* AVKit.framework */,
 				A188C1B421B3D82000C1FD52 /* AVFoundation.framework */,
 			);
@@ -286,6 +319,7 @@
 				A177AC9521E64D12003DBCE7 /* SongPlayer.swift in Sources */,
 				A167C8BD21E7702E0002F366 /* Ranking.swift in Sources */,
 				A180A11221B2DB47006F77C4 /* Query.swift in Sources */,
+				A167C8DE21E7979F0002F366 /* RecognitionViewController.swift in Sources */,
 				736ED30821A2EF770095C26E /* SearchTableViewController.swift in Sources */,
 				A167C8B521E6DF310002F366 /* PlayViewController.swift in Sources */,
 				A167C8C021E7731A0002F366 /* Analyzer.swift in Sources */,
@@ -462,8 +496,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MusicAggregationSearch/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cjinchi.MusicAggregationSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/MusicAggregationSearch/lib/Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -481,8 +520,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MusicAggregationSearch/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.cjinchi.MusicAggregationSearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/MusicAggregationSearch/lib/Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

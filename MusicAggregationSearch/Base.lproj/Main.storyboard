@@ -128,9 +128,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="搜索" id="EIi-oz-dwm">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="KPZ-f3-iDO">
+                            <connections>
+                                <segue destination="ecJ-jT-5Ie" kind="show" id="9S5-WV-A1c"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="play" id="Wzo-RX-F5s">
                             <connections>
-                                <action selector="showDetail:" destination="6Ux-dd-T2j" id="ow4-YM-dfA"/>
+                                <action selector="showDetail:" destination="6Ux-dd-T2j" id="vUb-Id-IfJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -199,6 +204,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wc3-zP-tR6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5164" y="446"/>
+        </scene>
+        <!--Recognition View Controller-->
+        <scene sceneID="J64-iY-aer">
+            <objects>
+                <viewController id="ecJ-jT-5Ie" customClass="RecognitionViewController" customModule="MusicAggregationSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hEU-FI-7vE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6c-Fq-ys0">
+                                <rect key="frame" x="127" y="231" width="66" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="controlButtonClicked:" destination="ecJ-jT-5Ie" eventType="touchUpInside" id="Axb-v7-VIg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7J3-Wq-Uni">
+                                <rect key="frame" x="145" y="317" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="stop"/>
+                                <connections>
+                                    <action selector="stopButtonClicked:" destination="ecJ-jT-5Ie" eventType="touchUpInside" id="glp-tx-nZD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cOe-Xf-95t"/>
+                    </view>
+                    <connections>
+                        <outlet property="playControlButton" destination="l6c-Fq-ys0" id="juu-Pi-yst"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gUh-nm-C5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4781" y="-357"/>
         </scene>
         <!--Play View Controller-->
         <scene sceneID="k6u-JA-Ish">
