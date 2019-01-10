@@ -4,7 +4,9 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -56,7 +58,13 @@
                             <outlet property="delegate" destination="VFg-gl-Rro" id="Z04-da-DKL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="榜单" id="QqJ-hY-fkg"/>
+                    <navigationItem key="navigationItem" title="榜单" id="QqJ-hY-fkg">
+                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="8ti-Q3-7K7">
+                            <connections>
+                                <segue destination="Kys-bb-Atj" kind="push" id="8p7-h1-1Ob"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ivm-Je-5Hi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -120,14 +128,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="搜索" id="EIi-oz-dwm">
-                        <barButtonItem key="leftBarButtonItem" systemItem="play" id="tsf-v6-NMq">
+                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="Wzo-RX-F5s">
                             <connections>
-                                <action selector="toPlay:" destination="6Ux-dd-T2j" id="wqa-n3-72m"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="pause" id="Nud-mY-NdE">
-                            <connections>
-                                <action selector="toPause:" destination="6Ux-dd-T2j" id="baK-Gv-Vh3"/>
+                                <segue destination="Kys-bb-Atj" kind="push" id="Lyh-K1-STM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -197,6 +200,40 @@
             </objects>
             <point key="canvasLocation" x="5164" y="446"/>
         </scene>
+        <!--Play View Controller-->
+        <scene sceneID="k6u-JA-Ish">
+            <objects>
+                <viewController storyboardIdentifier="detail" hidesBottomBarWhenPushed="YES" id="Kys-bb-Atj" customClass="PlayViewController" customModule="MusicAggregationSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qwm-ux-dg1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTu-cI-t3r">
+                                <rect key="frame" x="40" y="107" width="240" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2P3-IT-9aW">
+                                <rect key="frame" x="135" y="440" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="play"/>
+                                <connections>
+                                    <action selector="playControlButtonClicked:" destination="Kys-bb-Atj" eventType="touchUpInside" id="zbD-Ij-ffA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="OhP-lw-nJ7"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="as2-SZ-BEw"/>
+                    <connections>
+                        <outlet property="imageView" destination="fTu-cI-t3r" id="R4e-Hm-bI5"/>
+                        <outlet property="playControlButton" destination="2P3-IT-9aW" id="f2F-GX-PvQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DKV-w9-QoW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4340.625" y="825"/>
+        </scene>
         <!--附近-->
         <scene sceneID="ZWK-XJ-xuq">
             <objects>
@@ -245,7 +282,13 @@
                             <outlet property="delegate" destination="dXi-4f-COx" id="WYL-KB-Pn8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="附近热搜" largeTitleDisplayMode="always" id="O8u-6T-83Q"/>
+                    <navigationItem key="navigationItem" title="附近热搜" largeTitleDisplayMode="always" id="O8u-6T-83Q">
+                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="QgV-bW-5hy">
+                            <connections>
+                                <segue destination="Kys-bb-Atj" kind="push" id="UyC-mE-cHH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HeE-Pw-K0b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -272,8 +315,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="play" width="50" height="50"/>
         <image name="shoucang-2" width="32" height="32"/>
         <image name="sousuo-2" width="32" height="32"/>
         <image name="yonghu-2" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="8p7-h1-1Ob"/>
+    </inferredMetricsTieBreakers>
 </document>

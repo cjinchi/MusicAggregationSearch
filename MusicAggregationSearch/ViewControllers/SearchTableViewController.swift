@@ -10,28 +10,7 @@ import UIKit
 import AVFoundation
 import AVKit
 
-class SearchTableViewController: UITableViewController,UISearchBarDelegate,URLSessionDownloadDelegate{
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        
-    }
-    
-    @IBAction func toPause(_ sender: Any) {
-//            rightBarButton. = UIBarButtonItem.SystemItem.play
-        self.navigationItem.rightBarButtonItem?.isEnabled = false
-        self.navigationItem.leftBarButtonItem?.isEnabled = true
-        player?.pause()
-
-    }
-    
-    @IBAction func toPlay(_ sender: Any) {
-
-        self.navigationItem.rightBarButtonItem?.isEnabled = true
-        self.navigationItem.leftBarButtonItem?.isEnabled = false
-        player?.play()
-        
-    }
-    
-    
+class SearchTableViewController: UITableViewController,UISearchBarDelegate{
     
     @IBOutlet weak var keywordSearchBar: UISearchBar!
     let searchController = UISearchController(searchResultsController: nil)
@@ -39,18 +18,8 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate,URLSe
     var results = [Song]()
     var songSourceImages = [SongSource:UIImage]()
     let query = Query()
+    let playViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detail") as! PlayViewController
     var updatding = false
-    var player :AVPlayer? = nil
-    
-    private func loadSampleSongs(){
-//        let song1 = Song(title: "我爱南京", artist: "李志",source: .WY)
-//        let song2 = Song(title: "New Boy", artist: "朴树", source: .QQ)
-//        let song3 = Song(title: "一切", artist: "程璧", source: .XM)
-//
-//        results += [song1,song2,song3]
-        
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,21 +29,7 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate,URLSe
         for source in SongSource.allCases{
             songSourceImages[source] = UIImage(named: source.imageName)
         }
-        
-        loadSampleSongs()
-        
-        self.navigationItem.rightBarButtonItem?.isEnabled = false
-        self.navigationItem.leftBarButtonItem?.isEnabled = false
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
-    // MARK: - Table view data source
-    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
@@ -86,52 +41,60 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate,URLSe
             print(error)
         }
         
+ 
+        self.navigationController?.pushViewController(playViewController, animated: true)
         query.updateData(song: results[indexPath.row])
-        if results[indexPath.row].source == .KG{
-            query.getKGSongUrl(hash: results[indexPath.row].downloadInfo){mp3Url in
-                print(mp3Url)
-                self.playSong(stringUrl: mp3Url)
-                
-            }
-        }else{
-            
 
-            
-//            print("to play")
-//            print(results[indexPath.row].downloadInfo)
-//            let songUrl = NSURL(string: results[indexPath.row].downloadInfo)!
-//            let player = AVPlayer(url: songUrl as URL)
-//            let playerViewController = AVPlayerViewController()
-//            playerViewController.player = player
-//            present(playerViewController, animated: true, completion: nil)
-//            player.play()
-//            player.pau
-            playSong(stringUrl: results[indexPath.row].downloadInfo+"&br=128000")
-
-
-            
-        }
+//        songUrl: results[indexPath.row].downloadUrl+"&br=128000"
+//        playSong(stringUrl: results[indexPath.row].downloadInfo+"&br=128000")
+//        if results[indexPath.row].source == .KG{
+//            query.getKGSongUrl(hash: results[indexPath.row].downloadInfo){mp3Url in
+//                print(mp3Url)
+//                self.playSong(stringUrl: mp3Url)
+//
+//            }
+//        }else{
+//
+//
+//
+////            print("to play")
+////            print(results[indexPath.row].downloadInfo)
+////            let songUrl = NSURL(string: results[indexPath.row].downloadInfo)!
+////            let player = AVPlayer(url: songUrl as URL)
+////            let playerViewController = AVPlayerViewController()
+////            playerViewController.player = player
+////            present(playerViewController, animated: true, completion: nil)
+////            player.play()
+////            player.pau
+//            playSong(stringUrl: results[indexPath.row].downloadInfo+"&br=128000")
+//
+//
+//
+//        }
     }
     
     func playSong(stringUrl:String) -> (){
-        player?.pause()
+//        player?.pause()
+        if queuePlayer == nil{
+            queuePlayer = AVQueuePlayer()
+        }
+        queuePlayer?.pause()
+        queuePlayer?.removeAllItems()
         let songUrl = NSURL(string: stringUrl)!
         //            let player = AVPlayer(url: songUrl as URL)
-        player = AVPlayer(url: songUrl as URL)
+        let playerItem = AVPlayerItem(url: songUrl as URL)
+        queuePlayer?.insert(playerItem, after: nil)
+//        player = AVPlayer(playerItem: playerItem)
         
         let playerLayer = AVPlayerLayer(player: player)
         playerLayer.frame = CGRect(x: 10, y: 30, width: 100, height: 200)
         playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
         self.view.layer.addSublayer(playerLayer)
         
-        print(player?.timeControlStatus == AVPlayer.TimeControlStatus.paused);
+        queuePlayer?.play()
         
-        player?.play()
-        
-        print(player?.timeControlStatus == AVPlayer.TimeControlStatus.playing)
-        
-        self.navigationItem.leftBarButtonItem?.isEnabled = false
-        self.navigationItem.rightBarButtonItem?.isEnabled = true
+//        self.navigationItem.leftBarButtonItem?.isEnabled = false
+//        self.navigationItem.rightBarButtonItem?.isEnabled = true
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -224,5 +187,9 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate,URLSe
         // Pass the selected object to the new view controller.
     }
     */
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        <#code#>
+//    }
 
 }

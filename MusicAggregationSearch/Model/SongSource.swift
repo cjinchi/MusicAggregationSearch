@@ -13,7 +13,6 @@ enum SongSource:Int,CaseIterable{
     
     var imageName:String{
         switch self {
-//        case .XM:return "xm"
         case .QQ:return "qq"
         case .WY:return "wy"
         case .KG:return "kg"
@@ -31,9 +30,17 @@ enum SongSource:Int,CaseIterable{
             ret?.query = "key=579621905&s=\(keyword)&type=song&limit=15&offset=0"
             return ret
         case .KG:
-            var ret = URLComponents(string: "http://mobilecdn.kugou.com/api/v3/search/song")
-            ret?.query = "format=json&keyword=\(keyword)&page=1&pagesize=15&showtype=1"
+            var ret = URLComponents(string: "https://api.bzqll.com/music/kugou/search")
+            ret?.query = "key=579621905&s=\(keyword)&type=song&limit=15&offset=0"
             return ret
+        }
+    }
+    
+    func getAPIKeyword() -> String{
+        switch self {
+        case .QQ:return "tencent";
+        case .WY:return "netease";
+        case .KG:return "kugou";
         }
     }
     

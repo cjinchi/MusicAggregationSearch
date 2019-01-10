@@ -12,13 +12,15 @@ class Song{
     let title : String
     let artist : String
     let source : SongSource
-    let downloadInfo : String
+    let downloadUrl : String
+    let imageUrl : String
     
-    init(title:String,artist:String,source:SongSource,downloadInfo:String) {
+    init(title:String,artist:String,source:SongSource,downloadUrl:String,imageUrl:String) {
         
         self.title = title
         self.artist = artist
         self.source = source
-        self.downloadInfo = downloadInfo
+        self.downloadUrl = downloadUrl
+        self.imageUrl = imageUrl
     }
 }
