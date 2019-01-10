@@ -34,10 +34,14 @@ class SongPlayer{
     }
     
     func isPlaying()->Bool{
-        return playing
+        return hasSongToPlay()&&playing
     }
     
     func hasSongToPlay()->Bool{
-        return player.items().count == 0
+        return player.items().count != 0
+    }
+    
+    func setVolume(_ volume:Float) {
+        player.volume = volume
     }
 }

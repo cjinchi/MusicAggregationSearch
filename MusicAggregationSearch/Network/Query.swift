@@ -96,63 +96,34 @@ class Query{
     
     func updateData(source:SongSource,data:Data) -> () {
         print("to update",source)
-//        switch source {
-//        case .KG:
-//            var dic : [String:Any]
-//            do{
-//                dic = try (JSONSerialization.jsonObject(with: data, options: []) as? [String:Any])!
-//            } catch{
-//                print("json error")
-//                return
-//            }
-//
-//            if let errcode = dic["errcode"] as? Int,
-//                errcode == 0,
-//                let dataArray = dic["data"] as? [String:Any],
-//                let infoArray = dataArray["info"] as? [Any]{
-//                for songItem in infoArray{
-//                    if let songItem = songItem as? [String:Any],
-//                    let songName = songItem["songname"] as? String,
-//                    let artist = songItem["singername"] as? String,
-//                        let downloadInfo = songItem["hash"] as? String{
-//                        resultsPerSource[source]?.append(Song(title: songName, artist: artist, source: source, downloadInfo: downloadInfo))
-//                        print("append")
-//                    }
-//                }
-//            }else{
-//                print("json error")
-//                return
-//            }
-//            break
-//        case .WY,.QQ:
         
-//            break
+        resultsPerSource[source] = Analyzer.getSongsFromSearchResult(data: data, source: source)
+        
+//        var dic : [String:Any]
+//        do{
+//            dic = try (JSONSerialization.jsonObject(with: data, options: []) as? [String:Any])!
+//        }catch{
+//            print("json error")
+//            return
 //        }
-        var dic : [String:Any]
-        do{
-            dic = try (JSONSerialization.jsonObject(with: data, options: []) as? [String:Any])!
-        }catch{
-            print("json error")
-            return
-        }
-        
-        if let code = dic["code"] as? Int,
-            code == 200,
-            let dataArray = dic["data"] as? [Any]{
-            for songItem in dataArray{
-                if let songItem = songItem as? [String:Any],
-                    let songName = songItem["name"] as? String,
-                    let artist = songItem["singer"] as? String,
-                    let downloadUrl = songItem["url"] as? String,
-                    let imageUrl = songItem["pic"] as? String{
-                    resultsPerSource[source]?.append(Song(title: songName, artist: artist, source: source, downloadUrl: downloadUrl,imageUrl:imageUrl))
-                    print("append")
-                }
-            }
-        }else{
-            print("json error")
-            return
-        }
+//
+//        if let code = dic["code"] as? Int,
+//            code == 200,
+//            let dataArray = dic["data"] as? [Any]{
+//            for songItem in dataArray{
+//                if let songItem = songItem as? [String:Any],
+//                    let songName = songItem["name"] as? String,
+//                    let artist = songItem["singer"] as? String,
+//                    let downloadUrl = songItem["url"] as? String,
+//                    let imageUrl = songItem["pic"] as? String{
+//                    resultsPerSource[source]?.append(Song(title: songName, artist: artist, source: source, downloadUrl: downloadUrl,imageUrl:imageUrl))
+//                    print("append")
+//                }
+//            }
+//        }else{
+//            print("json error")
+//            return
+//        }
     }
     
     func getKGSongUrl(hash:String,completion:@escaping (String)->()){
@@ -277,14 +248,14 @@ class Query{
         dataTask.resume()
     }
     
-    func updateData(song:Song) -> (){
+    static func updateData(song:Song) -> (){
         var urlCompoments = URLComponents(string: "http://111.231.74.95/update")
         urlCompoments?.query = "title=\(song.title)&info=\(song.artist)&download=\(song.downloadUrl)&source=\(song.source.rawValue)"
         guard let url = urlCompoments?.url else {
             print("error when get url")
             return
         }
-        let dataTask = urlSession.dataTask(with: url){data,response,error in
+        let dataTask = URLSession.shared.dataTask(with: url){data,response,error in
             
         }
         dataTask.resume()

@@ -61,7 +61,7 @@
                     <navigationItem key="navigationItem" title="榜单" id="QqJ-hY-fkg">
                         <barButtonItem key="rightBarButtonItem" systemItem="play" id="8ti-Q3-7K7">
                             <connections>
-                                <segue destination="Kys-bb-Atj" kind="push" id="8p7-h1-1Ob"/>
+                                <action selector="showDetail:" destination="VFg-gl-Rro" id="iyw-P3-kAc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -130,7 +130,7 @@
                     <navigationItem key="navigationItem" title="搜索" id="EIi-oz-dwm">
                         <barButtonItem key="rightBarButtonItem" systemItem="play" id="Wzo-RX-F5s">
                             <connections>
-                                <segue destination="Kys-bb-Atj" kind="push" id="Lyh-K1-STM"/>
+                                <action selector="showDetail:" destination="6Ux-dd-T2j" id="ow4-YM-dfA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -209,12 +209,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTu-cI-t3r">
-                                <rect key="frame" x="40" y="107" width="240" height="240"/>
+                                <rect key="frame" x="40" y="91" width="240" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2P3-IT-9aW">
-                                <rect key="frame" x="135" y="440" width="50" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="buY-ou-6Fu">
+                                <rect key="frame" x="16" y="357" width="288" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85z-p9-fsC">
+                                <rect key="frame" x="16" y="410" width="288" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="MBm-Wg-Mhp">
+                                <rect key="frame" x="38" y="528" width="244" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="volumeChange:" destination="Kys-bb-Atj" eventType="valueChanged" id="cBV-p0-mTC"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2P3-IT-9aW">
+                                <rect key="frame" x="135" y="459" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <state key="normal" title="Button" image="play"/>
                                 <connections>
                                     <action selector="playControlButtonClicked:" destination="Kys-bb-Atj" eventType="touchUpInside" id="zbD-Ij-ffA"/>
@@ -226,13 +249,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="as2-SZ-BEw"/>
                     <connections>
+                        <outlet property="artistLabel" destination="85z-p9-fsC" id="20y-qj-Mj1"/>
                         <outlet property="imageView" destination="fTu-cI-t3r" id="R4e-Hm-bI5"/>
                         <outlet property="playControlButton" destination="2P3-IT-9aW" id="f2F-GX-PvQ"/>
+                        <outlet property="titleLabel" destination="buY-ou-6Fu" id="C7I-I6-22Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKV-w9-QoW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4340.625" y="825"/>
+            <point key="canvasLocation" x="4434" y="1039"/>
         </scene>
         <!--附近-->
         <scene sceneID="ZWK-XJ-xuq">
@@ -285,7 +310,7 @@
                     <navigationItem key="navigationItem" title="附近热搜" largeTitleDisplayMode="always" id="O8u-6T-83Q">
                         <barButtonItem key="rightBarButtonItem" systemItem="play" id="QgV-bW-5hy">
                             <connections>
-                                <segue destination="Kys-bb-Atj" kind="push" id="UyC-mE-cHH"/>
+                                <action selector="showDetail:" destination="dXi-4f-COx" id="2sn-WX-sU8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -320,7 +345,4 @@
         <image name="sousuo-2" width="32" height="32"/>
         <image name="yonghu-2" width="32" height="32"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="8p7-h1-1Ob"/>
-    </inferredMetricsTieBreakers>
 </document>

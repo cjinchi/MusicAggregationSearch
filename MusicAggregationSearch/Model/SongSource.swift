@@ -44,4 +44,19 @@ enum SongSource:Int,CaseIterable{
         }
     }
     
+    func getRankUrl()->URLComponents?{
+        switch self {
+        case .WY:
+            let ret = URLComponents(string: "https://api.bzqll.com/music/netease/songList?key=579621905&id=3778678");
+            return ret
+        case .QQ:
+            let ret = URLComponents(string: "https://api.bzqll.com/music/tencent/songList?key=579621905&id=6357173018")
+            return ret
+        case .KG:
+            let ret = URLComponents(string: "https://api.bzqll.com/music/kugou/songList?key=579621905&id=279295")
+            return ret
+            
+        }
+    }
+    
 }
