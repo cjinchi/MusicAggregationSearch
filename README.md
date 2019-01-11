@@ -128,6 +128,84 @@ func hasSongToPlay()->Bool{}
 
 该服务的使用比较简单，在```RecognitionViewController```中定了一个函数，用于控制```ACRCloudRecognition```服务的启动与结束，同时将识别的结果现实到屏幕上，并提供直接使用该结果作为关键字搜索的按钮。
 
-4、附近热搜（后台服务）
+4、附近热搜（定位服务，后台服务）
 
-这一部分使用Python的Flask框架搭建，
+定位服务使用```CLLocationManager```获取，由于只需要识别大致的区域范围，因此选择了百米级别的精度。为了方便多处使用定位信息，获取到的位置保存在```App```类的```static var coordinate```中。
+
+获取位置的核心代码如下：
+```swift
+//将NearbyTableViewController作为其delegate
+locationManager.delegate = self
+//百米级别的精度
+locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+//若尚未授权，则申请授权
+if CLLocationManager.authorizationStatus() == .notDetermined{
+    locationManager.requestWhenInUseAuthorization()
+}
+//开始更新位置
+locationManager.startUpdatingLocation()
+
+//在某处停止更新位置
+//...
+```
+
+后台服务则使用Python的Flask框架搭建，在用户同意提供定位权限后，提供了两个API：
+- 当用户点击一首歌曲播放时，歌曲信息、定位信息将上传至服务器
+- 当用户查看“附近热搜”列表时，将根据其定位获取数据库中的统计信息，生成列表（会筛去用户自身的搜索记录，只留下他人的统计信息）
+
+这两个API的格式如下：
+```python
+@app.route('/update')
+def update():
+    latitude = request.args.get('latitude')
+    longitude = request.args.get('longitude')
+    # And so on
+
+@app.route('/data')
+def nearby():
+    latitude = request.args.get('latitude')
+    longitude = request.args.get('longitude')
+    # And so on
+```
+
+此外，这一部分也使用```UIRefreshControl()```实现下滑刷新，以获取最新数据。
+
+5、收藏夹（数据持久化）
+
+这一部分通过```NSCoding```实现了数据持久化保存，将用户标记为“喜爱”的歌曲存放在收藏夹中。
+
+首先，为```class Song```实现```NSObject, NSCoding```协议，使其可以被编码保存。在实现这一部分时花费较多的时间处理系统报错，最后发现是因为```Song```中含有```enum```类型导致无法直接编码，因此改为保存```enum SongSource```类型的rawValue。编码的核心过程如下（解码是其逆过程，不再赘述）：
+
+```swift
+func encode(with aCoder: NSCoder) {
+    aCoder.encode(title, forKey: PropertyKey.title)
+    aCoder.encode(artist, forKey: PropertyKey.artist)
+    aCoder.encode(String(source.rawValue), forKey: PropertyKey.source)
+    aCoder.encode(downloadUrl, forKey: PropertyKey.downloadUrl)
+    aCoder.encode(imageUrl, forKey: PropertyKey.imageUrl)
+}
+```
+
+其次，在```StarTableViewController```中实现两个函数，分别用于保存数据、读取数据：
+```swift
+//保存数据
+static func saveSongs() {
+    do{
+        let data = try NSKeyedArchiver.archivedData(withRootObject: starSongs, requiringSecureCoding: false)
+        try data.write(to: URL(fileURLWithPath: Song.ArchiveURL.path))
+    }catch {
+        return
+    }
+}
+
+//读取数据 
+func loadSongs()->[Song]?{
+    do{
+        let ret = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(Data(contentsOf: URL(fileURLWithPath: Song.ArchiveURL.path))) as? [Song]
+        return ret
+    }catch{
+        return nil
+    }
+} 
+```
+
