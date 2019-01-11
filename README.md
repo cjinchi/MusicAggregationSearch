@@ -114,7 +114,7 @@
 
 <br/>
 
-2、音乐搜索、榜单（网络通讯，JSON解析）
+2、音乐搜索、榜单（**网络通讯，JSON解析**）
 
 这一部分基于[BZQLL](https://www.bzqll.com/)提供的API，使用NSURLSession实现网络通讯以提供音乐搜索、榜单获取的服务。核心代码在```Query.swift```文件中。
 
@@ -146,7 +146,7 @@ dataTasks[source] = urlSession.dataTask(with: url){data,response,error in
 
 <br/>
 
-3、音乐播放（AVPlayer）
+3、音乐播放（**AVPlayer**）
 
 在搜索得到音乐的下载地址后，使用```AVPlayer```播放。此处做了简单的封装，使用组合的设计模式实现```SongPlayer```类，提供了```play()```、```pause()```、```playNewSong()```等操作接口，及两个获取播放器状态的查询接口。
 ```swift
@@ -162,7 +162,7 @@ func hasSongToPlay()->Bool{}
 
 <br/>
 
-4、听歌识曲（ACRCloud）
+4、听歌识曲（**ACRCloud**）
 
 听歌识曲功能使用了[ACRCloud](http://console.acrcloud.cn)提供的服务，项目中lib群组下的所有文件均来自于ACRCloud库。该功能的主要流程是：麦克风接收用户周围环境的一段音频，上传至ACRCloud服务器进行解析与匹配，当匹配率大于某个值时将其作为结果返回。
 
@@ -170,7 +170,7 @@ func hasSongToPlay()->Bool{}
 
 <br/>
 
-5、附近热搜（定位服务，后台服务）
+5、附近热搜（**定位服务，后台服务**）
 
 定位服务使用```CLLocationManager```获取，由于只需要识别大致的区域范围，因此选择了百米级别的精度。为了方便多处使用定位信息，获取到的位置保存在```App```类的```static var coordinate```中。
 
@@ -214,7 +214,7 @@ def nearby():
 
 <br/>
 
-6、收藏夹（数据持久化）
+6、收藏夹（**数据持久化**）
 
 这一部分通过```NSCoding```实现了数据持久化保存，将用户标记为“喜爱”的歌曲存放在收藏夹中。
 
