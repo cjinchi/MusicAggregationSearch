@@ -18,6 +18,10 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var favorite: UIButton!
     
+    @IBAction func showDetail(_ sender: UIBarButtonItem) {
+   self.navigationController?.pushViewController(App.playViewController, animated: true)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

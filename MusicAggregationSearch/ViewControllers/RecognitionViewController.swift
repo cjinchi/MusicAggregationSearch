@@ -77,21 +77,31 @@ class RecognitionViewController: UIViewController {
             client?.stopRecordRec()
             started = false
             resultLabel.text = "很遗憾，没有找到相关歌曲。"
+            playControlButton.setTitle("点击开始", for: .normal)
         }else{
             client?.startRecordRec()
             started = true
             resultLabel.text = "正在聆听..."
+            playControlButton.setTitle("点击停止", for: .normal)
         }
         
         toPlayButton.isHidden = true
         
     }
     
+    @IBAction func showDetail(_ sender: UIBarButtonItem) {
+    self.navigationController?.pushViewController(App.playViewController, animated: true)
+ 
+    }
+    
+    
     @IBAction func toPlay(_ sender: UIButton) {
+        print("in to play")
         if let stvc = SearchTableViewController.stvc{
             stvc.searchRecognitionSong(title: resultLabel.text!)
+            self.navigationController?.pushViewController(stvc, animated: true)
         }
-        self.navigationController?.popViewController(animated: true)
+        
     }
     
     

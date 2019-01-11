@@ -264,7 +264,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qiz-dQ-erd"/>
                     </view>
-                    <navigationItem key="navigationItem" title="推荐" id="zpg-FB-wZm"/>
+                    <navigationItem key="navigationItem" title="推荐" id="zpg-FB-wZm">
+                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="1Ct-1n-kTL">
+                            <connections>
+                                <action selector="showDetail:" destination="KJw-Fu-QpC" id="hIF-E0-OJo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="favorite" destination="kAB-0b-hqU" id="24r-wG-aJ4"/>
                         <outlet property="listen" destination="2pc-tE-Mum" id="A3v-5u-AQ9"/>
@@ -276,7 +282,7 @@
             </objects>
             <point key="canvasLocation" x="3405" y="-447.88732394366195"/>
         </scene>
-        <!--Recognition View Controller-->
+        <!--听歌识曲-->
         <scene sceneID="J64-iY-aer">
             <objects>
                 <viewController id="ecJ-jT-5Ie" customClass="RecognitionViewController" customModule="MusicAggregationSearch" customModuleProvider="target" sceneMemberID="viewController">
@@ -325,6 +331,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cOe-Xf-95t"/>
                     </view>
+                    <navigationItem key="navigationItem" title="听歌识曲" id="qcr-Hu-zBO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="nzR-Np-wJT">
+                            <connections>
+                                <action selector="showDetail:" destination="ecJ-jT-5Ie" id="piF-fK-4DV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="playControlButton" destination="l6c-Fq-ys0" id="juu-Pi-yst"/>
                         <outlet property="resultLabel" destination="B7q-eR-v3j" id="YIw-Ct-drX"/>
@@ -383,7 +396,13 @@
                             <outlet property="delegate" destination="DZX-2F-TlN" id="4p9-4I-Z3D"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="收藏夹" id="XzI-0A-dCc"/>
+                    <navigationItem key="navigationItem" title="收藏夹" id="XzI-0A-dCc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="VBe-F3-eXc">
+                            <connections>
+                                <action selector="showDeatil:" destination="DZX-2F-TlN" id="TlO-Px-Nsk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gh2-HI-8HA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -560,7 +579,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HeE-Pw-K0b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5529" y="-402"/>
+            <point key="canvasLocation" x="5306" y="-368"/>
         </scene>
         <!--搜索-->
         <scene sceneID="QJZ-tx-OlK">

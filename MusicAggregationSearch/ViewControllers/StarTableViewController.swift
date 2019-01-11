@@ -134,5 +134,12 @@ class StarTableViewController: UITableViewController {
             return nil
         }
     }
+    
+    
+    @IBAction func showDeatil(_ sender: UIBarButtonItem) {
+     self.navigationController?.pushViewController(App.playViewController, animated: true)
+
+    }
+    
 
 }
