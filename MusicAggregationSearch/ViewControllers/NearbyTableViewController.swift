@@ -146,6 +146,17 @@ class NearbyTableViewController: UITableViewController ,CLLocationManagerDelegat
         self.navigationController?.pushViewController(App.playViewController, animated: true)
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        App.playViewController.updateWith(newSongToPlay: results[indexPath.row])
+        self.navigationController?.pushViewController(App.playViewController, animated: true)
+        Query.updateData(song: results[indexPath.row])
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        reload(self)
+    }
+    
     
 }
 
@@ -157,6 +168,8 @@ extension NearbyTableViewController{
             let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(OKAction)
             self.present(alert, animated: true, completion: nil)
+        case .authorizedWhenInUse:
+            reload(self)
         default:
             return
         }

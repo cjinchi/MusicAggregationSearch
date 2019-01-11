@@ -244,7 +244,7 @@ class Query{
                             let downloadInfo = item["download"] as? String,
                             let imageUrl = item["image"] as? String{
                                 print("here append")
-                                nearbyResults.append(Song(title: title, artist: artist, source: SongSource(rawValue: source)!, downloadUrl:downloadInfo,imageUrl:imageUrl))
+                                nearbyResults.append(Song(title: title, artist: artist, source: SongSource(rawValue: source)!, downloadUrl:downloadInfo.replacingOccurrences(of: "_", with: "&"),imageUrl:imageUrl.replacingOccurrences(of: "_", with: "&")))
                                 nearbyInfos.append(info)
                                 print("nearby")
                             }
@@ -262,7 +262,7 @@ class Query{
     
     static func updateData(song:Song) -> (){
         var urlCompoments = URLComponents(string: "http://111.231.74.95/update")
-        var que = "title=\(song.title)&artist=\(song.artist)&download=\(song.downloadUrl)&source=\(song.source.rawValue)&device=\(App.deviceId ?? "123")&image=\(song.imageUrl)"
+        var que = "title=\(song.title)&artist=\(song.artist)&download=\(song.downloadUrl.replacingOccurrences(of: "&", with: "_"))&source=\(song.source.rawValue)&device=\(App.deviceId ?? "123")&image=\(song.imageUrl.replacingOccurrences(of: "&", with: "_"))"
         
         if let coor = App.coordinate{
             que += "&latitude=\(coor.latitude)&longitude=\(coor.longitude)"
