@@ -7,7 +7,7 @@
 - [“音乐搜索”功能API(第三方)](https://api.bzqll.com/music/kugou/search?key=579621905&s=123&limit=100&offset=0&type=song)
 - [“音乐播放”功能API(第三方)]()
 - [“附近热搜”功能API(自建)](http://111.231.74.95/data)
-- “听歌识曲”功能使用[ACRCloud](http://console.acrcloud.cn)提供的试用版接口，该接口将于2019年1月23日左右到期。
+- “听歌识曲”功能使用[ACRCloud](http://console.acrcloud.cn)提供的试用版接口，该接口将于2019年1月23日左右到期。
 
 ## 网络要求
 - 测试时请关闭VPN
@@ -28,10 +28,10 @@
 - [【讨论】针对目前国内分散的音乐版权，作为开发者，有什么可行的解决方案？](https://www.v2ex.com/t/265405)
 
 ## 问题
-音乐版权的分散导致用户在查找歌曲时，常常需要在多个App搜索才能找到，且耗费较多时间在多次输入关键字、看开屏广告上。
+音乐版权的分散导致用户在查找歌曲时，常常需要在多个App搜索才能找到，且耗费较多时间在多次输入关键字、看开屏广告上。
 
 ## App功能
-聚集网易云音乐、QQ音乐、酷狗音乐三个平台的资源，以“歌曲查找”为核心目标提供以下六种功能：
+聚集网易云音乐、QQ音乐、酷狗音乐三个平台的资源，以“歌曲查找”为核心目标提供以下六种功能：
 
 1、当用户有确切目标时：
 - 【聚合音乐搜索】根据关键字，同时搜索以上三个平台的资源
@@ -40,7 +40,7 @@
 2、当用户没有确切目标时：
 - 【聚合音乐榜单】将以上三个平台的音乐排行榜聚集、去重，以获取覆盖范围更广的榜单
 
-- 【附近热搜】根据手机定位，获取附近区域内他人的热门搜索记录
+- 【附近热搜】根据手机定位，获取附近区域内他人的热门搜索记录
 
 3、其他功能：
 - 【音乐试听】以上查找到的资源，可以在App内试听
@@ -66,7 +66,7 @@
 5、附近热搜界面
 ![附近热搜界面](img/IMG_8867.png)
 
-6、榜单界面
+6、榜单界面
 ![榜单界面](img/IMG_8868.png)
 
 7、收藏夹界面
@@ -82,11 +82,11 @@
 
 这一部分基于[BZQLL](https://www.bzqll.com/)提供的API，使用NSURLSession实现网络通讯以提供音乐搜索、榜单获取的服务。核心代码在```Query.swift```文件中。
 
-在进行网络通讯时，首先生成一个URLSession对象，然后用它生成的dataTask发送Http请求，同时提供一个completion函数定义Http请求返回后的操作。以下代码是一个简单的示例：
+在进行网络通讯时，首先生成一个URLSession对象，然后用它生成的dataTask发送Http请求，同时提供一个completion函数定义Http请求返回后的操作。以下代码是一个简单的示例：
 ```swift
 dataTasks[source] = urlSession.dataTask(with: url){data,response,error in
     defer {
-        //确保函数结束后dataTasks[source]为nil
+        //确保函数结束后dataTasks[source]为nil
         self.dataTasks[source] = nil
     }
     if let e = error{
@@ -99,7 +99,7 @@ dataTasks[source] = urlSession.dataTask(with: url){data,response,error in
         self.updateData(source: source, data: d)
         successful = true
     }
-    //使用completion函数通知调用者该函数执行结束
+    //使用completion函数通知调用者该函数执行结束
     DispatchQueue.main.async {
         completion(successful)
     }
@@ -108,9 +108,9 @@ dataTasks[source] = urlSession.dataTask(with: url){data,response,error in
 
 从API获取到的是JSON格式的数据，此处使用```JSONSerialization.jsonObject()```函数解析。
 
-2、音乐播放（AVPlayer）
+2、音乐播放（AVPlayer）
 
-在搜索得到音乐的下载地址后，使用```AVPlayer```播放。此处做了简单的封装，使用组合的设计模式实现```SongPlayer```类，提供了```play()```、```pause()```、```playNewSong()```等操作接口，及两个获取播放器状态的查询接口。
+在搜索得到音乐的下载地址后，使用```AVPlayer```播放。此处做了简单的封装，使用组合的设计模式实现```SongPlayer```类，提供了```play()```、```pause()```、```playNewSong()```等操作接口，及两个获取播放器状态的查询接口。
 ```swift
 // 操作接口
 func playNewSong(songUrl urlStr:String){}
@@ -124,13 +124,13 @@ func hasSongToPlay()->Bool{}
 
 3、听歌识曲（ACRCloud）
 
-听歌识曲功能使用了[ACRCloud](http://console.acrcloud.cn)提供的服务，项目中lib群组下的所有文件均来自于ACRCloud库。
+听歌识曲功能使用了[ACRCloud](http://console.acrcloud.cn)提供的服务，项目中lib群组下的所有文件均来自于ACRCloud库。
 
 该服务的使用比较简单，在```RecognitionViewController```中定了一个函数，用于控制```ACRCloudRecognition```服务的启动与结束，同时将识别的结果现实到屏幕上，并提供直接使用该结果作为关键字搜索的按钮。
 
-4、附近热搜（定位服务，后台服务）
+4、附近热搜（定位服务，后台服务）
 
-定位服务使用```CLLocationManager```获取，由于只需要识别大致的区域范围，因此选择了百米级别的精度。为了方便多处使用定位信息，获取到的位置保存在```App```类的```static var coordinate```中。
+定位服务使用```CLLocationManager```获取，由于只需要识别大致的区域范围，因此选择了百米级别的精度。为了方便多处使用定位信息，获取到的位置保存在```App```类的```static var coordinate```中。
 
 获取位置的核心代码如下：
 ```swift
@@ -138,7 +138,7 @@ func hasSongToPlay()->Bool{}
 locationManager.delegate = self
 //百米级别的精度
 locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-//若尚未授权，则申请授权
+//若尚未授权，则申请授权
 if CLLocationManager.authorizationStatus() == .notDetermined{
     locationManager.requestWhenInUseAuthorization()
 }
@@ -153,7 +153,7 @@ locationManager.startUpdatingLocation()
 - 当用户点击一首歌曲播放时，歌曲信息、定位信息将上传至服务器
 - 当用户查看“附近热搜”列表时，将根据其定位获取数据库中的统计信息，生成列表（会筛去用户自身的搜索记录，只留下他人的统计信息）
 
-这两个API的格式如下：
+这两个API的格式如下：
 ```python
 @app.route('/update')
 def update():
@@ -170,11 +170,11 @@ def nearby():
 
 此外，这一部分也使用```UIRefreshControl()```实现下滑刷新，以获取最新数据。
 
-5、收藏夹（数据持久化）
+5、收藏夹（数据持久化）
 
 这一部分通过```NSCoding```实现了数据持久化保存，将用户标记为“喜爱”的歌曲存放在收藏夹中。
 
-首先，为```class Song```实现```NSObject, NSCoding```协议，使其可以被编码保存。在实现这一部分时花费较多的时间处理系统报错，最后发现是因为```Song```中含有```enum```类型导致无法直接编码，因此改为保存```enum SongSource```类型的rawValue。编码的核心过程如下（解码是其逆过程，不再赘述）：
+首先，为```class Song```实现```NSObject, NSCoding```协议，使其可以被编码保存。在实现这一部分时花费较多的时间处理系统报错，最后发现是因为```Song```中含有```enum```类型导致无法直接编码，因此改为保存```enum SongSource```类型的rawValue。编码的核心过程如下（解码是其逆过程，不再赘述）：
 
 ```swift
 func encode(with aCoder: NSCoder) {
