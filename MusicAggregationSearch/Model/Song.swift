@@ -12,11 +12,11 @@ import os.log
 class Song:NSObject, NSCoding{
     func encode(with aCoder: NSCoder) {
         print("in encode",title)
-//        aCoder.encode(title, forKey: PropertyKey.title)
-//        aCoder.encode(artist, forKey: PropertyKey.artist)
-//        aCoder.encode(source, forKey: PropertyKey.source)
-//        aCoder.encode(downloadUrl, forKey: PropertyKey.downloadUrl)
-//        aCoder.encode(imageUrl, forKey: PropertyKey.imageUrl)
+        aCoder.encode(title, forKey: PropertyKey.title)
+        aCoder.encode(artist, forKey: PropertyKey.artist)
+        aCoder.encode(String(source.rawValue), forKey: PropertyKey.source)
+        aCoder.encode(downloadUrl, forKey: PropertyKey.downloadUrl)
+        aCoder.encode(imageUrl, forKey: PropertyKey.imageUrl)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -24,11 +24,12 @@ class Song:NSObject, NSCoding{
         let artist1 = aDecoder.decodeObject(forKey: PropertyKey.artist) as? String,
         let downloadUrl1 = aDecoder.decodeObject(forKey: PropertyKey.downloadUrl) as? String,
         let imageUrl1 = aDecoder.decodeObject(forKey: PropertyKey.imageUrl) as? String,
-        let source1 = aDecoder.decodeObject(forKey: PropertyKey.source) as? SongSource
+        let source1 = aDecoder.decodeObject(forKey: PropertyKey.source) as? String
             else{
+                print("error")
                 return nil
         }
-        self.init(title: title1, artist: artist1, source: source1, downloadUrl: downloadUrl1, imageUrl: imageUrl1)
+        self.init(title: title1, artist: artist1, source: SongSource(rawValue: Int(source1)!)!, downloadUrl: downloadUrl1, imageUrl: imageUrl1)
     }
     
     let title : String

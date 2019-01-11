@@ -250,7 +250,7 @@ class Query{
     
     static func updateData(song:Song) -> (){
         var urlCompoments = URLComponents(string: "http://111.231.74.95/update")
-        urlCompoments?.query = "title=\(song.title)&info=\(song.artist)&download=\(song.downloadUrl)&source=\(song.source.rawValue)"
+        urlCompoments?.query = "title=\(song.title)&info=\(song.artist)&download=\(song.downloadUrl)&source=\(song.source.rawValue)&device=\(App.deviceId ?? "123")"
         guard let url = urlCompoments?.url else {
             print("error when get url")
             return

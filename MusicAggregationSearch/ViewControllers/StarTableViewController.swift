@@ -112,16 +112,29 @@ class StarTableViewController: UITableViewController {
     static func saveSongs() {
         print("star",starSongs.count)
         print(starSongs[0].title)
-        let successful = NSKeyedArchiver.archiveRootObject(starSongs, toFile: Song.ArchiveURL.path)
-        if successful{
-            print("save successful")
-        }else{
-            print("save failed")
+//        let successful = NSKeyedArchiver.archiveRootObject(starSongs, toFile: Song.ArchiveURL.path)
+//        if successful{
+//            print("save successful")
+//        }else{
+//            print("save failed")
+//        }
+        
+        do{
+            let data = try NSKeyedArchiver.archivedData(withRootObject: starSongs, requiringSecureCoding: false)
+            try data.write(to: URL(fileURLWithPath: Song.ArchiveURL.path))
+        }catch {
+            print("save error")
         }
     }
     
     func loadSongs()->[Song]?{
-        return NSKeyedUnarchiver.unarchiveObject(withFile: Song.ArchiveURL.path) as? [Song]
+//        return NSKeyedUnarchiver.unarchiveObject(withFile: Song.ArchiveURL.path) as? [Song]
+        do{
+            let ret = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(Data(contentsOf: URL(fileURLWithPath: Song.ArchiveURL.path))) as? [Song]
+            return ret
+        }catch{
+            return nil
+        }
     }
 
 }
