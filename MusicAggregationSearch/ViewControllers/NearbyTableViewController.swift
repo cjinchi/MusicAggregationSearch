@@ -180,6 +180,7 @@ extension NearbyTableViewController{
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         App.coordinate = locations[0].coordinate
+        print("lcoation new")
         if results.count == 0{
             reload(self)
         }

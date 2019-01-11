@@ -61,6 +61,13 @@ class StarTableViewController: UITableViewController {
     }
 
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        App.playViewController.updateWith(newSongToPlay: StarTableViewController.starSongs[indexPath.row])
+        self.navigationController?.pushViewController(App.playViewController, animated: true)
+        Query.updateData(song: StarTableViewController.starSongs[indexPath.row])
+
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

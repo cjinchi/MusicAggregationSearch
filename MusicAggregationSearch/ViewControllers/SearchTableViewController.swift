@@ -24,8 +24,14 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate{
     let playViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detail") as! PlayViewController
 //    var updatding = false
     
+    let indicator = UIActivityIndicatorView(frame: CGRect(x: 100, y: 50, width: 20, height: 20))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        indicator.style = UIActivityIndicatorView.Style.gray
+        indicator.center = self.view.center
+        self.view.addSubview(indicator)
         
         SearchTableViewController.stvc = self
         
@@ -162,13 +168,17 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate{
         searchBar.resignFirstResponder()
 //        updatding = true
         
+        indicator.startAnimating()
+        
         query.getResultsFromAllSource(keyword: searchBar.text!){songs in
             self.results = Filter.dumplicateFilter(rawData: songs)
             self.tableView.reloadData()
             
+            self.indicator.stopAnimating()
+            
         }
         
-        
+        results.removeAll()
         self.tableView.reloadData()
 //        updatding = false
         
