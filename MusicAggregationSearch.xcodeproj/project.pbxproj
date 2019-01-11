@@ -13,6 +13,7 @@
 		736ED2F221A2EA640095C26E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 736ED2F021A2EA640095C26E /* LaunchScreen.storyboard */; };
 		736ED2FD21A2EA640095C26E /* MusicAggregationSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736ED2FC21A2EA640095C26E /* MusicAggregationSearchTests.swift */; };
 		736ED30821A2EF770095C26E /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736ED30721A2EF770095C26E /* SearchTableViewController.swift */; };
+		A1352AB621E885D9005B2E51 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1352AB521E885D9005B2E51 /* MainViewController.swift */; };
 		A13D2F9E21E7A034003FE6FE /* libACRCloud_IOS_SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A13D2F9D21E7A034003FE6FE /* libACRCloud_IOS_SDK.a */; };
 		A13D2FA021E7A081003FE6FE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A13D2F9F21E7A081003FE6FE /* AudioToolbox.framework */; };
 		A13D2FA221E7A089003FE6FE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A13D2FA121E7A089003FE6FE /* Security.framework */; };
@@ -58,6 +59,7 @@
 		736ED2FC21A2EA640095C26E /* MusicAggregationSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAggregationSearchTests.swift; sourceTree = "<group>"; };
 		736ED2FE21A2EA640095C26E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		736ED30721A2EF770095C26E /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		A1352AB521E885D9005B2E51 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A13D2F9D21E7A034003FE6FE /* libACRCloud_IOS_SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libACRCloud_IOS_SDK.a; sourceTree = "<group>"; };
 		A13D2F9F21E7A081003FE6FE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A13D2FA121E7A089003FE6FE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -161,6 +163,7 @@
 		A167C8B321E6DD190002F366 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A1352AB521E885D9005B2E51 /* MainViewController.swift */,
 				A167C8DD21E7979F0002F366 /* RecognitionViewController.swift */,
 				A1C9545021B57C65009A93D4 /* RankingTableViewController.swift */,
 				A1C9545221B58E34009A93D4 /* NearbyTableViewController.swift */,
@@ -341,6 +344,7 @@
 				736ED2E821A2EA640095C26E /* AppDelegate.swift in Sources */,
 				A167C8BB21E753200002F366 /* App.swift in Sources */,
 				A13D2FA621E7B67D003FE6FE /* Filter.swift in Sources */,
+				A1352AB621E885D9005B2E51 /* MainViewController.swift in Sources */,
 				A180A10C21B23AAC006F77C4 /* Song.swift in Sources */,
 				A180A10E21B23B44006F77C4 /* SongSource.swift in Sources */,
 			);

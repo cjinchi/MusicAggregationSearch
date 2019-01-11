@@ -86,7 +86,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ivm-Je-5Hi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3433.125" y="886.25"/>
+            <point key="canvasLocation" x="4433" y="-978"/>
         </scene>
         <!--搜索-->
         <scene sceneID="SDh-ed-6uP">
@@ -159,11 +159,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="搜索" id="EIi-oz-dwm">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="KPZ-f3-iDO">
-                            <connections>
-                                <segue destination="DZX-2F-TlN" kind="show" id="wAp-AR-ln5"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="play" id="Wzo-RX-F5s">
                             <connections>
                                 <action selector="showDetail:" destination="6Ux-dd-T2j" id="vUb-Id-IfJ"/>
@@ -176,7 +171,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="atg-9I-GgQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4046.25" y="-294.71830985915494"/>
+            <point key="canvasLocation" x="3782" y="329"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="aFE-PB-YJy">
@@ -189,52 +184,93 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="0bv-nm-G1U" kind="relationship" relationship="viewControllers" id="XSx-hq-gFr"/>
-                        <segue destination="tIK-5m-sDm" kind="relationship" relationship="viewControllers" id="qEa-Le-zj3"/>
-                        <segue destination="WbY-fT-Vzi" kind="relationship" relationship="viewControllers" id="une-WX-SSh"/>
+                        <segue destination="m2a-ai-dtm" kind="relationship" relationship="viewControllers" id="EJ7-XW-X71"/>
+                        <segue destination="tIK-5m-sDm" kind="relationship" relationship="viewControllers" id="QhK-tH-2LM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ZL-bs-WZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1148" y="227.13643178410797"/>
         </scene>
-        <!--榜单-->
-        <scene sceneID="nwy-aG-pX7">
+        <!--推荐-->
+        <scene sceneID="KLr-D2-SSz">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0bv-nm-G1U" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="榜单" image="shoucang-2" id="B4U-fp-DqM"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xWe-V5-ZI5">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <viewController id="KJw-Fu-QpC" customClass="MainViewController" customModule="MusicAggregationSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Kc-vO-DXB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1Vi-ji-RzC">
+                                <rect key="frame" x="20" y="84" width="280" height="415"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pc-tE-Mum">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="98"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="听歌识曲" backgroundImage="bg"/>
+                                        <connections>
+                                            <segue destination="ecJ-jT-5Ie" kind="show" id="s9A-4V-Ie1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qVC-53-mMn">
+                                        <rect key="frame" x="0.0" y="106" width="280" height="97.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="附近热搜" backgroundImage="bg">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="dXi-4f-COx" kind="show" id="WL8-Yv-4Vw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVF-Ko-9DK">
+                                        <rect key="frame" x="0.0" y="211.5" width="280" height="98"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="榜单" backgroundImage="bg">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="VFg-gl-Rro" kind="show" id="ZwL-YD-yPM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAB-0b-hqU">
+                                        <rect key="frame" x="0.0" y="317.5" width="280" height="97.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="收藏夹" backgroundImage="bg">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="DZX-2F-TlN" kind="show" id="nwJ-U6-7aY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="kAB-0b-hqU" secondAttribute="bottom" id="WYk-iH-eKK"/>
+                                    <constraint firstItem="2pc-tE-Mum" firstAttribute="top" secondItem="1Vi-ji-RzC" secondAttribute="top" id="tv2-Gc-rwL"/>
+                                    <constraint firstItem="2pc-tE-Mum" firstAttribute="height" secondItem="qVC-53-mMn" secondAttribute="height" id="v3p-Yk-JK8"/>
+                                    <constraint firstItem="qVC-53-mMn" firstAttribute="height" secondItem="aVF-Ko-9DK" secondAttribute="height" id="vLa-aj-Yfm"/>
+                                    <constraint firstItem="aVF-Ko-9DK" firstAttribute="height" secondItem="kAB-0b-hqU" secondAttribute="height" id="xub-wE-zo9"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Qiz-dQ-erd" firstAttribute="trailing" secondItem="1Vi-ji-RzC" secondAttribute="trailing" constant="20" id="2OX-Bk-JZX"/>
+                            <constraint firstItem="1Vi-ji-RzC" firstAttribute="leading" secondItem="Qiz-dQ-erd" secondAttribute="leading" constant="20" id="iq8-0h-pWT"/>
+                            <constraint firstItem="1Vi-ji-RzC" firstAttribute="top" secondItem="Qiz-dQ-erd" secondAttribute="top" constant="20" id="ky1-IQ-H32"/>
+                            <constraint firstItem="1Vi-ji-RzC" firstAttribute="bottom" secondItem="Qiz-dQ-erd" secondAttribute="bottom" constant="-20" id="thG-xx-Hvh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Qiz-dQ-erd"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="推荐" id="zpg-FB-wZm"/>
                     <connections>
-                        <segue destination="VFg-gl-Rro" kind="relationship" relationship="rootViewController" id="ndo-1P-l76"/>
+                        <outlet property="favorite" destination="kAB-0b-hqU" id="24r-wG-aJ4"/>
+                        <outlet property="listen" destination="2pc-tE-Mum" id="A3v-5u-AQ9"/>
+                        <outlet property="near" destination="qVC-53-mMn" id="rJM-kX-L7x"/>
+                        <outlet property="rank" destination="aVF-Ko-9DK" id="1Zd-Xj-2Yj"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="awI-9h-Wci" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xaq-Ch-Hw3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2435.625" y="886.25"/>
-        </scene>
-        <!--附近-->
-        <scene sceneID="eNH-Lp-ako">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WbY-fT-Vzi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="附近" image="yonghu-2" id="9qM-7Q-kQY"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wdQ-DF-mp1">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="dXi-4f-COx" kind="relationship" relationship="rootViewController" id="yac-XD-JJF"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wc3-zP-tR6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5164" y="446"/>
+            <point key="canvasLocation" x="3405" y="-447.88732394366195"/>
         </scene>
         <!--Recognition View Controller-->
         <scene sceneID="J64-iY-aer">
@@ -282,9 +318,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUh-nm-C5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4779.375" y="-357.04225352112678"/>
+            <point key="canvasLocation" x="5936" y="-860"/>
         </scene>
-        <!--Star Table View Controller-->
+        <!--收藏夹-->
         <scene sceneID="DsY-BL-4OD">
             <objects>
                 <tableViewController id="DZX-2F-TlN" customClass="StarTableViewController" customModule="MusicAggregationSearch" customModuleProvider="target" sceneMemberID="viewController">
@@ -332,10 +368,11 @@
                             <outlet property="delegate" destination="DZX-2F-TlN" id="4p9-4I-Z3D"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="收藏夹" id="XzI-0A-dCc"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gh2-HI-8HA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5752.5" y="-378.16901408450707"/>
+            <point key="canvasLocation" x="6148" y="-11"/>
         </scene>
         <!--Play View Controller-->
         <scene sceneID="k6u-JA-Ish">
@@ -430,7 +467,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKV-w9-QoW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4432.5" y="1038.3802816901409"/>
+            <point key="canvasLocation" x="5430" y="1038.3802816901409"/>
         </scene>
         <!--附近-->
         <scene sceneID="ZWK-XJ-xuq">
@@ -508,7 +545,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HeE-Pw-K0b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6011" y="438"/>
+            <point key="canvasLocation" x="5529" y="-402"/>
         </scene>
         <!--搜索-->
         <scene sceneID="QJZ-tx-OlK">
@@ -527,14 +564,33 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Upv-2Z-pTH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3217.5" y="-33.75"/>
+            <point key="canvasLocation" x="3099" y="329"/>
+        </scene>
+        <!--推荐-->
+        <scene sceneID="ZcN-vO-XJb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="m2a-ai-dtm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="推荐" image="shoucang-2" id="u20-Hb-LE5"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kk5-0M-G4G">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KJw-Fu-QpC" kind="relationship" relationship="rootViewController" id="UXH-v0-zhM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1LC-ZN-ePX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2407.5" y="-447.88732394366195"/>
         </scene>
     </scenes>
     <resources>
+        <image name="bg" width="300" height="100"/>
         <image name="heart_empty" width="32" height="32"/>
         <image name="play" width="50" height="50"/>
         <image name="shoucang-2" width="32" height="32"/>
         <image name="sousuo-2" width="32" height="32"/>
-        <image name="yonghu-2" width="32" height="32"/>
     </resources>
 </document>
