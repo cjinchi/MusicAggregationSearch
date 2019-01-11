@@ -203,8 +203,16 @@ class Query{
         dataTask.resume()
     }
     
-    func getNearbySongList(completion:@escaping ([Song])->()) -> (){
-        let urlCompoments = URLComponents(string: "http://111.231.74.95/data")
+    func getNearbySongList(completion:@escaping ([Song],[String])->()) -> (){
+        if App.coordinate == nil{
+            return
+        }
+        var urlCompoments = URLComponents(string: "http://111.231.74.95/data")
+        var que = "device=\(App.deviceId ?? "123")"
+        if let coor = App.coordinate{
+            que += "&latitude=\(coor.latitude)&longitude=\(coor.longitude)"
+        }
+        urlCompoments?.query = que
         guard let url = urlCompoments?.url else {
             print("error when get url")
             return
@@ -216,6 +224,7 @@ class Query{
             }else if let d = data,let res = response as? HTTPURLResponse,res.statusCode == 200{
                 print("here in near")
                 var nearbyResults = [Song]()
+                var nearbyInfos = [String]()
                 var dic : [String:Any]
                 do{
                     dic = try (JSONSerialization.jsonObject(with: d, options: []) as? [String:Any])!
@@ -229,16 +238,19 @@ class Query{
                             print("here item")
                             if let item = item as? [String:Any],
                                 let title = item["title"] as? String,
+                                let artist = item["artist"] as? String,
                             let info = item["info"] as? String,
                             let source = item["source"] as? Int,
-                            let downloadInfo = item["download"] as? String{
+                            let downloadInfo = item["download"] as? String,
+                            let imageUrl = item["image"] as? String{
                                 print("here append")
-                                nearbyResults.append(Song(title: title, artist: info, source: SongSource(rawValue: source)!, downloadUrl:downloadInfo,imageUrl:""))
+                                nearbyResults.append(Song(title: title, artist: artist, source: SongSource(rawValue: source)!, downloadUrl:downloadInfo,imageUrl:imageUrl))
+                                nearbyInfos.append(info)
                                 print("nearby")
                             }
                     }
                     DispatchQueue.main.async {
-                        completion(nearbyResults)
+                        completion(nearbyResults,nearbyInfos)
                     }
                 }
                 
@@ -250,7 +262,14 @@ class Query{
     
     static func updateData(song:Song) -> (){
         var urlCompoments = URLComponents(string: "http://111.231.74.95/update")
-        urlCompoments?.query = "title=\(song.title)&info=\(song.artist)&download=\(song.downloadUrl)&source=\(song.source.rawValue)&device=\(App.deviceId ?? "123")"
+        var que = "title=\(song.title)&artist=\(song.artist)&download=\(song.downloadUrl)&source=\(song.source.rawValue)&device=\(App.deviceId ?? "123")&image=\(song.imageUrl)"
+        
+        if let coor = App.coordinate{
+            que += "&latitude=\(coor.latitude)&longitude=\(coor.longitude)"
+        }
+        
+        urlCompoments?.query = que
+
         guard let url = urlCompoments?.url else {
             print("error when get url")
             return

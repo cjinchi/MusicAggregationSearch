@@ -8,9 +8,12 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 class App{
     static let playViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detail") as! PlayViewController
     
     static let deviceId = UIDevice.current.identifierForVendor?.uuidString
+    
+    static var coordinate:CLLocationCoordinate2D? = nil
 }

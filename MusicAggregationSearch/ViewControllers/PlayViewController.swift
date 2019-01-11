@@ -37,9 +37,9 @@ class PlayViewController: UIViewController {
    
     let playImage = #imageLiteral(resourceName: "play")
     let pauseImage = #imageLiteral(resourceName: "pause")
-    
-    
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

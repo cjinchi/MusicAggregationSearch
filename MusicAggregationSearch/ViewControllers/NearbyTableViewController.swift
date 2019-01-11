@@ -7,20 +7,26 @@
 //
 
 import UIKit
+import CoreLocation
 
-class NearbyTableViewController: UITableViewController {
+class NearbyTableViewController: UITableViewController ,CLLocationManagerDelegate{
 
     var results = [Song]()
+    var infos = [String]()
     var songSourceImages = [SongSource:UIImage]()
+    
+    let locationManager = CLLocationManager()
     
     @objc private func reload(_ sender: Any){
         print("reload")
         let query = Query()
-        query.getNearbySongList(){nearbyResults in
+        query.getNearbySongList(){nearbyResults,nearbyInfos in
             self.results.removeAll()
+            self.infos.removeAll()
             for i in nearbyResults{
                 self.results.append(i)
             }
+            self.infos = nearbyInfos
             self.tableView.reloadData()
             self.refreshControl?.endRefreshing()
         }
@@ -39,11 +45,13 @@ class NearbyTableViewController: UITableViewController {
         }
         
         let query = Query()
-        query.getNearbySongList(){nearbyResults in
+        query.getNearbySongList(){nearbyResults,nearbyInfos in
             self.results.removeAll()
+            self.infos.removeAll()
             for i in nearbyResults{
                 self.results.append(i)
             }
+            self.infos = nearbyInfos
             self.tableView.reloadData()
         }
         // Uncomment the following line to preserve selection between presentations
@@ -51,6 +59,13 @@ class NearbyTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        
+        if ( CLLocationManager.authorizationStatus() == .notDetermined){
+            locationManager.requestWhenInUseAuthorization()
+        }
+        locationManager.startUpdatingLocation()
     }
 
     // MARK: - Table view data source
@@ -74,7 +89,8 @@ class NearbyTableViewController: UITableViewController {
         }
         
         let result = results[indexPath.row]
-        cell.setCellInfo(songTitle: result.title, songMoreInfo: result.artist, songSourceImage: songSourceImages[result.source]!)
+        let info = infos[indexPath.row]
+        cell.setCellInfo(songTitle: result.title+" - "+result.artist, songMoreInfo: info, songSourceImage: songSourceImages[result.source]!)
         
         
         return cell
@@ -131,4 +147,22 @@ class NearbyTableViewController: UITableViewController {
     }
     
     
+}
+
+extension NearbyTableViewController{
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .denied:
+            let alert = UIAlertController(title: "无法定位", message: "由于您禁用了定位功能，该功能无法使用。", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(OKAction)
+            self.present(alert, animated: true, completion: nil)
+        default:
+            return
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        App.coordinate = locations[0].coordinate
+    }
 }

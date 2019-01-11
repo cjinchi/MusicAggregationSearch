@@ -31,6 +31,7 @@
 		A180A10C21B23AAC006F77C4 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = A180A10B21B23AAC006F77C4 /* Song.swift */; };
 		A180A10E21B23B44006F77C4 /* SongSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A180A10D21B23B44006F77C4 /* SongSource.swift */; };
 		A180A11221B2DB47006F77C4 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = A180A11121B2DB47006F77C4 /* Query.swift */; };
+		A1BA442721E858F40016677C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BA442621E858F40016677C /* CoreLocation.framework */; };
 		A1C9545121B57C65009A93D4 /* RankingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C9545021B57C65009A93D4 /* RankingTableViewController.swift */; };
 		A1C9545321B58E34009A93D4 /* NearbyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C9545221B58E34009A93D4 /* NearbyTableViewController.swift */; };
 		A1C9545621B5A6FB009A93D4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A188C1B421B3D82000C1FD52 /* AVFoundation.framework */; };
@@ -79,6 +80,7 @@
 		A180A10D21B23B44006F77C4 /* SongSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongSource.swift; sourceTree = "<group>"; };
 		A180A11121B2DB47006F77C4 /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
 		A188C1B421B3D82000C1FD52 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A1BA442621E858F40016677C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A1C9545021B57C65009A93D4 /* RankingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewController.swift; sourceTree = "<group>"; };
 		A1C9545221B58E34009A93D4 /* NearbyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyTableViewController.swift; sourceTree = "<group>"; };
 		A1C9545421B5A6C1009A93D4 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
@@ -89,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1BA442721E858F40016677C /* CoreLocation.framework in Frameworks */,
 				A13D2FAF21E7C3E9003FE6FE /* CoreData.framework in Frameworks */,
 				A13D2FA421E7A099003FE6FE /* libc++.tbd in Frameworks */,
 				A13D2FA221E7A089003FE6FE /* Security.framework in Frameworks */,
@@ -211,6 +214,7 @@
 		A188C1B321B3D82000C1FD52 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1BA442621E858F40016677C /* CoreLocation.framework */,
 				A13D2FAE21E7C3E9003FE6FE /* CoreData.framework */,
 				A13D2FA321E7A099003FE6FE /* libc++.tbd */,
 				A13D2FA121E7A089003FE6FE /* Security.framework */,
