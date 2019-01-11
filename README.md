@@ -160,7 +160,7 @@ func hasSongToPlay()->Bool{}
 
 4、听歌识曲（ACRCloud）
 
-听歌识曲功能使用了[ACRCloud](http://console.acrcloud.cn)提供的服务，项目中lib群组下的所有文件均来自于ACRCloud库。
+听歌识曲功能使用了[ACRCloud](http://console.acrcloud.cn)提供的服务，项目中lib群组下的所有文件均来自于ACRCloud库。该功能的主要流程是：麦克风接收用户周围环境的一段音频，上传至ACRCloud服务器进行解析与匹配，当匹配率大于某个值时将其作为结果返回。
 
 该服务的使用比较简单，在```RecognitionViewController```中定了一个函数，用于控制```ACRCloudRecognition```服务的启动与结束，同时将识别的结果现实到屏幕上，并提供直接使用该结果作为关键字搜索的按钮。
 
@@ -249,3 +249,7 @@ func loadSongs()->[Song]?{
 } 
 ```
 
+# 参考资料
+- [Start Developing iOS Apps (Swift)](https://developer.apple.com/library/archive/referencelibrary/GettingStarted/DevelopiOSAppsSwift/)
+- [BZQLL音乐搜索API文档](http://api.bzqll.com/)
+- [ACRCloud Docs](https://www.acrcloud.com/docs/acrcloud/demos/ios-demo/)
