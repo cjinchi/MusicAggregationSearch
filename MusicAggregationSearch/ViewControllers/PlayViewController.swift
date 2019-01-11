@@ -19,6 +19,18 @@ class PlayViewController: UIViewController {
     
     @IBOutlet weak var artistLabel: UILabel!
     
+    @IBAction func addToStarSongs(_ sender: UIButton) {
+        for (index, element) in StarTableViewController.starSongs.enumerated(){
+            if currentSong?.downloadUrl == element.downloadUrl{
+                StarTableViewController.starSongs.remove(at: index)
+                //change icon
+                return
+            }
+        }
+        StarTableViewController.starSongs.insert(currentSong!, at: 0)
+        StarTableViewController.saveSongs()
+    }
+    
     
     let player = SongPlayer()
     var currentSong:Song? = nil

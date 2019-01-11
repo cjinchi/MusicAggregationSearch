@@ -36,32 +36,32 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate{
         }
         
         
-        let managedObectContext = NSPersistentContainer(name: "SongList").viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "SongList", in: managedObectContext)
-        let song = NSManagedObject(entity: entity!, insertInto: managedObectContext)
-        song.setValue("text", forKey: "title")
-        do {
-            try managedObectContext.save()
-        } catch  {
-            fatalError("无法保存")
-        }
+//        let managedObectContext = NSPersistentContainer(name: "SongList").viewContext
+//        let entity = NSEntityDescription.entity(forEntityName: "SongList", in: managedObectContext)
+//        let song = NSManagedObject(entity: entity!, insertInto: managedObectContext)
+//        song.setValue("text", forKey: "title")
+//        do {
+//            try managedObectContext.save()
+//        } catch  {
+//            fatalError("无法保存")
+//        }
         
-        let managedObectContext2 = NSPersistentContainer(name: "SongList").viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SongList")
-
-        do {
-            let fetchedResults = try managedObectContext2.fetch(fetchRequest) as? [NSManagedObject]
-            if let results = fetchedResults {
-                print(results.count)
-                
-                tableView.reloadData()
-            }else{
-                print("fail core data")
-            }
-            
-        } catch  {
-            fatalError("获取失败")
-        }
+//        let managedObectContext2 = NSPersistentContainer(name: "SongList").viewContext
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "SongList")
+//
+//        do {
+//            let fetchedResults = try managedObectContext2.fetch(fetchRequest) as? [NSManagedObject]
+//            if let results = fetchedResults {
+//                print(results.count)
+//                
+//                tableView.reloadData()
+//            }else{
+//                print("fail core data")
+//            }
+//            
+//        } catch  {
+//            fatalError("获取失败")
+//        }
     
     }
     
@@ -155,7 +155,6 @@ class SearchTableViewController: UITableViewController,UISearchBarDelegate{
         let result = results[indexPath.row]
         cell.setCellInfo(songTitle: result.title, songMoreInfo: result.artist, songSourceImage: songSourceImages[result.source]!)
         
-
         return cell
     }
     
