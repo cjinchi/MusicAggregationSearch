@@ -141,12 +141,10 @@
 				A167C8B621E707A70002F366 /* Network */,
 				A167C8B321E6DD190002F366 /* ViewControllers */,
 				736ED2E721A2EA640095C26E /* AppDelegate.swift */,
-				A167C8BA21E753200002F366 /* App.swift */,
 				736ED2EB21A2EA640095C26E /* Main.storyboard */,
 				736ED2EE21A2EA640095C26E /* Assets.xcassets */,
 				736ED2F021A2EA640095C26E /* LaunchScreen.storyboard */,
 				736ED2F321A2EA640095C26E /* Info.plist */,
-				A177AC9421E64D12003DBCE7 /* SongPlayer.swift */,
 			);
 			path = MusicAggregationSearch;
 			sourceTree = "<group>";
@@ -197,6 +195,8 @@
 		A167C8BE21E773070002F366 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				A167C8BA21E753200002F366 /* App.swift */,
+				A177AC9421E64D12003DBCE7 /* SongPlayer.swift */,
 				A13D2FA521E7B67D003FE6FE /* Filter.swift */,
 				A167C8BF21E7731A0002F366 /* Analyzer.swift */,
 			);
