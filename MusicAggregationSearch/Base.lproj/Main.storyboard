@@ -422,6 +422,7 @@
                     <navigationItem key="navigationItem" id="as2-SZ-BEw"/>
                     <connections>
                         <outlet property="artistLabel" destination="85z-p9-fsC" id="20y-qj-Mj1"/>
+                        <outlet property="heartButton" destination="L9b-yn-VfH" id="Ycn-ri-GgK"/>
                         <outlet property="imageView" destination="fTu-cI-t3r" id="R4e-Hm-bI5"/>
                         <outlet property="playControlButton" destination="2P3-IT-9aW" id="f2F-GX-PvQ"/>
                         <outlet property="titleLabel" destination="buY-ou-6Fu" id="C7I-I6-22Y"/>

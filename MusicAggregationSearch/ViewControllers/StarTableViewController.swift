@@ -110,8 +110,6 @@ class StarTableViewController: UITableViewController {
     
     
     static func saveSongs() {
-        print("star",starSongs.count)
-        print(starSongs[0].title)
 //        let successful = NSKeyedArchiver.archiveRootObject(starSongs, toFile: Song.ArchiveURL.path)
 //        if successful{
 //            print("save successful")

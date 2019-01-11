@@ -19,16 +19,22 @@ class PlayViewController: UIViewController {
     
     @IBOutlet weak var artistLabel: UILabel!
     
+    @IBOutlet weak var heartButton: UIButton!
+    
+    let fullHeart = UIImage(named: "heart_full")
+    let emptyHeart = UIImage(named: "heart_empty")
     @IBAction func addToStarSongs(_ sender: UIButton) {
         for (index, element) in StarTableViewController.starSongs.enumerated(){
             if currentSong?.downloadUrl == element.downloadUrl{
                 StarTableViewController.starSongs.remove(at: index)
-                //change icon
+                StarTableViewController.saveSongs()
+                heartButton.setImage(emptyHeart, for: .normal)
                 return
             }
         }
         StarTableViewController.starSongs.insert(currentSong!, at: 0)
         StarTableViewController.saveSongs()
+        heartButton.setImage(fullHeart, for: .normal)
     }
     
     
@@ -81,7 +87,17 @@ class PlayViewController: UIViewController {
             self.imageView.image = img
         }
         
-        playControlButton.imageView?.image = pauseImage
+        playControlButton.setImage(pauseImage, for: .normal)
+        
+//        playControlButton.imageView?.image = pauseImage
+        for element in StarTableViewController.starSongs{
+            if currentSong?.downloadUrl == element.downloadUrl{
+                heartButton.setImage(fullHeart, for: .normal)
+                return
+            }
+        }
+        
+        heartButton.setImage(emptyHeart, for: .normal)
     }
     
     @IBAction func playControlButtonClicked(_ sender: UIButton) {
