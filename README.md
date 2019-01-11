@@ -5,7 +5,7 @@
 
 由于本应用依赖于部分第三方API、自建的服务端等不可控的网络因素，当出现问题时，可以通过以下链接确认是否为API自身问题：
 - [“音乐搜索”功能API(第三方)](https://api.bzqll.com/music/kugou/search?key=579621905&s=123&limit=100&offset=0&type=song)
-- [“音乐播放”功能API(第三方)]()
+- [“音乐播放”功能API(第三方)](https://m10.music.126.net/20190111235154/4c06c2d17c630605fa88b9b28a8b2bf5/ymusic/fdcc/b00e/d47a/872bf5a1ec26adbd82f92d6584773f19.mp3)
 - [“附近热搜”功能API(自建)](http://111.231.74.95/data)
 - “听歌识曲”功能使用[ACRCloud](http://console.acrcloud.cn)提供的试用版接口，该接口将于2019年1月23日左右到期。
 
