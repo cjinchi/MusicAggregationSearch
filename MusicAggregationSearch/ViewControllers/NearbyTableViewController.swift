@@ -66,6 +66,8 @@ class NearbyTableViewController: UITableViewController ,CLLocationManagerDelegat
             locationManager.requestWhenInUseAuthorization()
         }
         locationManager.startUpdatingLocation()
+        
+        
     }
 
     // MARK: - Table view data source
@@ -178,5 +180,8 @@ extension NearbyTableViewController{
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         App.coordinate = locations[0].coordinate
+        if results.count == 0{
+            reload(self)
+        }
     }
 }

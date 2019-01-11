@@ -188,8 +188,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="m2a-ai-dtm" kind="relationship" relationship="viewControllers" id="EJ7-XW-X71"/>
                         <segue destination="tIK-5m-sDm" kind="relationship" relationship="viewControllers" id="QhK-tH-2LM"/>
+                        <segue destination="m2a-ai-dtm" kind="relationship" relationship="viewControllers" id="EJ7-XW-X71"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ZL-bs-WZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -419,7 +419,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rVb-xc-gQQ">
                                 <rect key="frame" x="20" y="340" width="280" height="67"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="buY-ou-6Fu">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择歌曲播放" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="buY-ou-6Fu">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="38.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <nil key="textColor"/>

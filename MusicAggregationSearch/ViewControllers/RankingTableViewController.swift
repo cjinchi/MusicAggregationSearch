@@ -24,6 +24,11 @@ class RankingTableViewController: UITableViewController {
 //                self.results.append(i)
 //            }
 //        }
+        indicator.style = UIActivityIndicatorView.Style.gray
+        indicator.center = self.view.center
+        self.view.addSubview(indicator)
+        indicator.startAnimating()
+        
         print("456")
         Ranking.getAllRanking(){result in
             print("123")
@@ -34,8 +39,8 @@ class RankingTableViewController: UITableViewController {
         
             self.results = Filter.dumplicateFilter(rawData: result)
             self.tableView.reloadData()
+            self.indicator.stopAnimating()
         }
-        
         
     }
 
@@ -43,6 +48,8 @@ class RankingTableViewController: UITableViewController {
     
     var results = [Song]()
     var songSourceImages = [SongSource:UIImage]()
+    
+    let indicator = UIActivityIndicatorView(frame: CGRect(x: 100, y: 50, width: 20, height: 20))
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

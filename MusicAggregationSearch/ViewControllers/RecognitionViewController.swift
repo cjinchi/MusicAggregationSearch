@@ -99,7 +99,8 @@ class RecognitionViewController: UIViewController {
         print("in to play")
         if let stvc = SearchTableViewController.stvc{
             stvc.searchRecognitionSong(title: resultLabel.text!)
-            self.navigationController?.pushViewController(stvc, animated: true)
+            self.navigationController?.popViewController(animated: true)
+            self.tabBarController?.selectedIndex = 0
         }
         
     }
